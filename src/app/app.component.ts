@@ -30,8 +30,6 @@ export class AppComponent implements OnInit {
 
   public ngOnInit(): void {
     setTimeout(() => this.sliderUpdate(this.slider.value), 10);
-
-    console.log(this.tax.calculate(123000));
   }
 
   public onInputChange(event: MdSliderChange): void {

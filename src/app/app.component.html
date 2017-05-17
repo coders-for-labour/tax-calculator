@@ -17,7 +17,7 @@
 <md-slider step="1" min="1" max="100" style="width: 100%" (input)="onInputChange($event)" (change)="onInputChange($event)" value="3" #slider></md-slider>
 Salary: {{ salary | currency:'GBP':true:'1.0-0' }} / year
 <div *ngIf="result">
-  Alloance: {{ result.allowance }}<br/>
+  Allowance: {{ result.allowance }}<br/>
   Taxable Income: {{ result.taxable | currency:'GBP':true:'1.2-2' }}<br>
   After Tax: {{ result.net | currency:'GBP':true:'1.2-2' }}<br/>
   Change: <span *ngIf="result.change == 0">No Change</span><span *ngIf="result.change > 0">-{{ result.change | currency:'GBP':true:'1.2-2' }} / year</span>
