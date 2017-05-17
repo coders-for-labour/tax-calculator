@@ -1,0 +1,23 @@
+/* You can add global styles to this file, and also import other style files */
+@import url("./material.css");
+
+html,body {
+    font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+}
+
+.mat-slider-thumb.marker {
+    width: 120px;
+    height: 60px;
+    top: -22px;
+    right: -95px;
+}
+
+.mat-slider-thumb.marker:after {
+    position: absolute;
+    content: "";
+    border-left: 1px solid #000;
+    height: 30px;
+    width: 0;
+    left: 6px;
+    bottom: -30px;
+}
