@@ -1,94 +1,84 @@
-import {Injectable, Inject} from '@angular/core';
+interface TaxBand {
+    start: number;
+    end?: number;
+    rate: number;
+}
+
+export interface TaxConfig {
+    allowance: number;
+    taperedAllowanceThreshold: number;
+    bands: TaxBands;
+}
+
+export type TaxBands = { 
+    [key: string]: TaxBand;
+}
+
+export interface TaxCalculation {
+    rate: number;
+    taxable: number;
+    value: number;
+}
+
+export type TaxResult = { 
+    [key: string]: TaxCalculation; 
+}
 
 export interface CalculationResult {
     allowance?: number;
     taxable?: number;
-    change?: number;
-    net?: number;
+    bands?: TaxResult;
+    tax?: number;
 }
 
-interface TaxBracket {
-    max: number;
-    rate: number;
-}
-
-interface TaxConfig {
-    basic?: TaxBracket;
-    middle?: TaxBracket;
-    higher?: TaxBracket;
-    additional?: TaxBracket;
-}
-
-const ALLOWANCE: number = 11500;
-const ALLOWANCE_THRESHOLD: number = 100000;
-
-const CURRENT_TAX: TaxConfig = {
-    basic: { max: 33500, rate: 20 },
-    higher: { max: 150000, rate: 40 },
-    additional: { max: Number.MAX_SAFE_INTEGER, rate: 45 }
-}
-
-const PROPOSED_TAX: TaxConfig = {
-    basic: { max: 33500, rate: 20 },
-    middle: { max: 80000, rate: 40 },
-    higher: { max: 123000, rate: 45 },
-    additional: { max: Number.MAX_SAFE_INTEGER, rate: 50 }
-}
-
-@Injectable()
 export class TaxService {
-    public calculate(salary: number): CalculationResult {
-        var allowance = this.getAllowance(salary);
+    public calculate(salary: number, config: TaxConfig): CalculationResult {
+        var allowance = this.getAllowance(salary, config);
         var taxable = this.getTaxable(salary, allowance);
-        var currentDeducted = this.deductTax(CURRENT_TAX, taxable);
-        var proposedDeducted = this.deductTax(PROPOSED_TAX, taxable);
-        // NEED TO CALCULATED DEDUCTIONS
+        var tax = this.calculateTax(taxable, config.bands);
 
         return {
             allowance: allowance,
-            taxable: taxable
+            taxable: taxable,
+            bands: tax.bands,
+            tax: tax.total
         };
     }
 
-    // NEED TO CALCULATE ALLOWANCE CORRECTLY - @ £123,000 deduct £1 for every £2 over.
-    private getAllowance(salary: number): number {
-        if (salary <= ALLOWANCE_THRESHOLD)
-            return ALLOWANCE;
-
-        var aboveThreshold = salary - ALLOWANCE_THRESHOLD;
-        var reduction = Math.floor(aboveThreshold / 2);
-        var result = ALLOWANCE - reduction;
-
-        if (result < 0)
-            return 0;
-
-        return result;
+    private getAllowance(salary: number, config: TaxConfig): number {
+        var taperedAllowanceDeduction = Math.max((salary - config.taperedAllowanceThreshold) / 2, 0);
+        return Math.max(config.allowance - taperedAllowanceDeduction, 0);
     }
 
     private getTaxable(salary: number, allowance: number): number {
-        if (salary <= allowance)
-            return 0;
-
-        return salary - allowance;
+         return Math.max(salary - allowance, 0);
     }
 
-    private deductTax(config: TaxConfig, input: number): number {
-        var basic = Math.min(config.basic.max, input);
-        var middle = 0;
-        var middleBand = 0;
+    private calculateTax(input: number, bands: TaxBands): { bands: TaxResult, total: number } {
+        let result: TaxResult = {};
+        let total = 0;
 
-        if (config.middle) {
-            var earningsInMiddleBand = Math.max(input - config.basic.max, 0);
-            middle = Math.min(earningsInMiddleBand, config.middle.max);
-            middleBand = config.middle.max;
+        for (let name in bands) {
+            let band = bands[name];
+
+            let taxable: number;
+
+            if (band.end)
+                taxable = Math.max(Math.min(input, band.end) - band.start, 0);
+            else
+                taxable = Math.max(input - band.start, 0);
+ 
+            var per = band.rate / 100;
+            var tax = taxable * per;
+            total += tax;
+
+            result[name] = {
+                rate: band.rate,
+                taxable: taxable,
+                value: tax
+            }
         }
 
-        var earningsInHigherBand = Math.max(input - config.basic.max - middleBand, 0);
-        var higher = Math.min(earningsInHigherBand, config.higher.max);
-
-        var earningsinAdditionalBand = Math.max(input - config.basic.max - middleBand - config.higher.max, 0);
-        var additional = Math.min(earningsinAdditionalBand, config.additional.max);
-        console.log(basic, middle, higher, additional);
-        return basic;
+        return { bands: result, total: total };
     }
-}
+} 

@@ -1,6 +1,27 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MdSliderChange, MdSlider } from "@angular/material";
-import { TaxService, CalculationResult } from "./tax.service";
+import { TaxService, CalculationResult, TaxConfig } from "./tax.service";
+
+const CURRENT_TAX: TaxConfig = { 
+    allowance: 11500,
+    taperedAllowanceThreshold: 100000,
+    bands: {
+      basic: { start: 0, end: 33500, rate: 20 },
+      higher: { start: 33500, end: 150000, rate: 40 },
+      additional: { start: 150000, rate: 45 }
+    }
+}
+
+const PROPOSED_TAX: TaxConfig = { 
+    allowance: 11500,
+    taperedAllowanceThreshold: 100000,
+    bands: {
+      basic: { start: 0, end: 33500, rate: 20 },
+      higher: { start: 33500, end: 80000, rate: 40 },
+      additional: { start: 80000, end: 123000, rate: 45 },
+      extra: { start: 123000, rate: 50 }
+    }
+}
 
 @Component({
   selector: 'app-root',
@@ -21,7 +42,8 @@ export class AppComponent implements OnInit {
     this.calculate();
   }
 
-  public result: CalculationResult;
+  public current: CalculationResult;
+  public proposed: CalculationResult;
 
   @ViewChild("slider")
   public slider: MdSlider;
@@ -66,6 +88,7 @@ export class AppComponent implements OnInit {
   }
 
   private calculate(): void {
-    this.result = this.tax.calculate(this._salary);
+    this.current = this.tax.calculate(this._salary, CURRENT_TAX);
+    this.proposed = this.tax.calculate(this._salary, PROPOSED_TAX);
   }
 }
