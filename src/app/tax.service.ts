@@ -1,3 +1,5 @@
+import {Injectable, Inject} from '@angular/core';
+
 export interface CalculationResult {
     allowance?: number;
     taxable?: number;
@@ -33,6 +35,7 @@ const PROPOSED_TAX: TaxConfig = {
     additional: { max: Number.MAX_SAFE_INTEGER, rate: 50 }
 }
 
+@Injectable()
 export class TaxService {
     public calculate(salary: number): CalculationResult {
         var allowance = this.getAllowance(salary);
