@@ -3,9 +3,6 @@
 </h1>
 <div class="mat-slider mat-slider-horizontal" style="width: 100%">
   <div class="mat-slider-wrapper">
-    <div class="mat-slider-thumb-container" style="transform: translateX(-97.9798%);" *ngIf="salary <= 123000">
-      <div class="mat-slider-thumb marker">Personal Allowance</div>
-    </div>
     <div class="mat-slider-thumb-container" style="transform: translateX(-55.5556%);">
       <div class="mat-slider-thumb marker">£80,000</div>
     </div>
@@ -16,9 +13,15 @@
 </div>
 <md-slider step="1" min="1" max="100" style="width: 100%" (input)="onInputChange($event)" (change)="onInputChange($event)" value="3" #slider></md-slider>
 Salary: {{ salary | currency:'GBP':true:'1.0-0' }} / year
-<div *ngIf="result">
-  Allowance: {{ result.allowance }}<br/>
-  Taxable Income: {{ result.taxable | currency:'GBP':true:'1.2-2' }}<br>
-  After Tax: {{ result.net | currency:'GBP':true:'1.2-2' }}<br/>
-  Change: <span *ngIf="result.change == 0">No Change</span><span *ngIf="result.change > 0">-{{ result.change | currency:'GBP':true:'1.2-2' }} / year</span>
+<div *ngIf="current && proposed">
+  Allowance: {{ current.allowance }}<br/>
+  Taxable Income: {{ current.taxable | currency:'GBP':true:'1.2-2' }}<br>
+  After Tax: {{ current.net | currency:'GBP':true:'1.2-2' }}<br/>
+  Change: <span *ngIf="current.change == 0">No Change</span><span *ngIf="current.change > 0">-{{ current.change | currency:'GBP':true:'1.2-2' }} / year</span>
+</div>
+<div style="float: left; width: 50%">
+  <pre style="padding: 10px">{{ current | json }}</pre>
+</div>
+<div style="float: left; width: 50%">
+  <pre style="padding: 10px">{{ proposed | json }}</pre>
 </div>
