@@ -17,7 +17,7 @@ export type TaxBands = {
 export interface TaxCalculation {
     rate: number;
     taxable: number;
-    value: number;
+    tax: number;
 }
 
 export type TaxResult = { 
@@ -75,7 +75,7 @@ export class TaxService {
             result[name] = {
                 rate: band.rate,
                 taxable: taxable,
-                value: tax
+                tax: tax
             }
         }
 

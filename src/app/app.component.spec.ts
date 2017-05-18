@@ -34,6 +34,6 @@ describe('AppComponent', () => {
   }));
 
   it('should display allowance of £11,500', async(() => {
-    expect(component.result.allowance).toEqual(11500);
+    expect(component.current.allowance).toEqual(11500);
   }));
 });
