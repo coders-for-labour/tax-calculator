@@ -1,7 +1,8 @@
 import { TestBed, async, ComponentFixture } from '@angular/core/testing';
 import { MaterialModule } from "@angular/material";
 import { AppComponent } from './app.component';
-import {TaxService} from './tax.service';
+import { TaxService } from './tax.service';
+import { NationalInsuranceService } from './national-insurance.service';
 
 describe('AppComponent', () => {
   let component : AppComponent;
@@ -12,7 +13,7 @@ describe('AppComponent', () => {
       declarations: [
         AppComponent
       ],
-      providers: [TaxService]
+      providers: [TaxService, NationalInsuranceService]
     }).compileComponents().then(() => {
       fixture = TestBed.createComponent(AppComponent);
       component = fixture.componentInstance;
@@ -33,7 +34,7 @@ describe('AppComponent', () => {
     expect(compiled.querySelector('h1').textContent).toContain('app works!');
   }));
 
-  it('should display allowance of £11,500', async(() => {
-    expect(component.current.allowance).toEqual(11500);
+  it('should display allowance of £11,509', async(() => {
+    expect(component.current.allowance).toEqual(11509);
   }));
 });

@@ -8,6 +8,7 @@ import { MaterialModule } from "@angular/material";
 import { AppComponent } from './app.component';
 
 import { TaxService } from "./tax.service";
+import { NationalInsuranceService } from "./national-insurance.service";
 
 @NgModule({
   declarations: [
@@ -23,7 +24,7 @@ import { TaxService } from "./tax.service";
   exports: [
     MaterialModule
   ],
-  providers: [TaxService],
+  providers: [TaxService, NationalInsuranceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

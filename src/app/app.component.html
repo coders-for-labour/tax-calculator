@@ -17,11 +17,19 @@ Salary: {{ salary | currency:'GBP':true:'1.0-0' }} / year
   Allowance: {{ current.allowance }}<br/>
   Taxable Income: {{ current.taxable | currency:'GBP':true:'1.2-2' }}<br>
   After Tax: {{ current.net | currency:'GBP':true:'1.2-2' }}<br/>
-  Change: <span *ngIf="current.change == 0">No Change</span><span *ngIf="current.change > 0">-{{ current.change | currency:'GBP':true:'1.2-2' }} / year</span>
+  Change: <span *ngIf="proposed.tax - current.tax == 0">No Change</span><span *ngIf="proposed.tax - current.tax > 0">{{ proposed.tax - current.tax | currency:'GBP':true:'1.2-2' }} / year</span>
 </div>
 <div style="float: left; width: 50%">
-  <pre style="padding: 10px">{{ current | json }}</pre>
+  <pre style="padding: 10px">
+    {{ current | json }}
+    NI: {{ ni }}
+    Take Home: {{ current.net - ni }}
+  </pre>
 </div>
 <div style="float: left; width: 50%">
-  <pre style="padding: 10px">{{ proposed | json }}</pre>
+  <pre style="padding: 10px">
+    {{ proposed | json }}
+    NI: {{ ni }}
+    Take Home: {{ proposed.net - ni }}
+  </pre>
 </div>

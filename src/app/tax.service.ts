@@ -1,3 +1,5 @@
+import { Injectable } from "@angular/core";
+
 interface TaxBand {
     start: number;
     end?: number;
@@ -29,32 +31,36 @@ export interface CalculationResult {
     taxable?: number;
     bands?: TaxResult;
     tax?: number;
+    net?: number;
 }
 
+@Injectable()
 export class TaxService {
-    public calculate(salary: number, config: TaxConfig): CalculationResult {
-        var allowance = this.getAllowance(salary, config);
-        var taxable = this.getTaxable(salary, allowance);
-        var tax = this.calculateTax(taxable, config.bands);
+    public calculate(income: number, config: TaxConfig): CalculationResult {
+        let allowance = this.getAllowance(income, config);
+        let taxable = this.getTaxable(income, allowance);
+        let tax = this.calculateTax(taxable, config.bands);
+        let net = income - tax.total;
 
         return {
             allowance: allowance,
             taxable: taxable,
             bands: tax.bands,
-            tax: tax.total
+            tax: tax.total,
+            net: net
         };
     }
-
-    private getAllowance(salary: number, config: TaxConfig): number {
-        var taperedAllowanceDeduction = Math.max((salary - config.taperedAllowanceThreshold) / 2, 0);
+ 
+    private getAllowance(income: number, config: TaxConfig): number {
+        var taperedAllowanceDeduction = Math.max((income - config.taperedAllowanceThreshold) / 2, 0);
         return Math.max(config.allowance - taperedAllowanceDeduction, 0);
     }
 
-    private getTaxable(salary: number, allowance: number): number {
-         return Math.max(salary - allowance, 0);
+    private getTaxable(income: number, allowance: number): number {
+         return Math.max(income - allowance, 0);
     }
 
-    private calculateTax(input: number, bands: TaxBands): { bands: TaxResult, total: number } {
+    private calculateTax(income: number, bands: TaxBands): { bands: TaxResult, total: number } {
         let result: TaxResult = {};
         let total = 0;
 
@@ -64,9 +70,9 @@ export class TaxService {
             let taxable: number;
 
             if (band.end)
-                taxable = Math.max(Math.min(input, band.end) - band.start, 0);
+                taxable = Math.max(Math.min(income, band.end) - band.start, 0);
             else
-                taxable = Math.max(input - band.start, 0);
+                taxable = Math.max(income - band.start, 0);
  
             var per = band.rate / 100;
             var tax = taxable * per;
