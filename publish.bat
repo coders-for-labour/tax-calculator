@@ -1,4 +1,4 @@
 @echo off
-ng build --prod
+call ng build --prod
 echo calculate.forlabour.com > dist/CNAME
-ngh
+call ngh
