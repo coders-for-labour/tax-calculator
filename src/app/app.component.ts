@@ -10,16 +10,28 @@ import { CURRENT_TAX, PROPOSED_TAX, NATIONAL_INSURANCE } from "./configuration";
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit { 
-  title = 'app works!';
-
   private _salary: number = 0;
+  private _manualEntry: boolean = false;
   public ni: number = 0;
+
+  public get manualEntry(): boolean {
+    return this._manualEntry;
+  }
+
+  public set manualEntry(value: boolean) {
+    this._manualEntry = value;
+    if (!value)
+      this.sliderUpdate(this.slider.value);
+  }
 
   public get salary(): number {
     return this._salary;
   }
 
   public set salary(value: number) {
+    if (value > 9999999)
+      value = 9999999;
+
     this._salary = value;
     this.calculate();
   }

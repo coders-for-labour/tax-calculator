@@ -1,36 +1,62 @@
-<h1>
-  {{title}}
-</h1>
-<div class="mat-slider mat-slider-horizontal" style="width: 100%">
-  <div class="mat-slider-wrapper">
-    <div class="mat-slider-thumb-container" style="transform: translateX(-55.5556%);">
-      <div class="mat-slider-thumb marker">£80,000</div>
+<md-sidenav-container>
+  <md-sidenav #sidenav mode="push" opened="true">
+    <button md-mini-fab (click)="sidenav.toggle()">
+      <md-icon>close</md-icon>
+    </button>
+    <div>
+      <ul>
+        <li>For illustration purposes only.</li>
+        <li>Does not take into account additional deductions e.g. childcare vouchers.</li>
+        <li>Take home amount includes National Insurance deductions.</li>
+      </ul>
     </div>
-    <div class="mat-slider-thumb-container" style="transform: translateX(-46.4646%);">
-      <div class="mat-slider-thumb marker">£123,000</div>
+    <footer class="sidenav-footer">
+      <a href="http://www.codersforlabour.com" target="_blank">Made by Volunteers</a>
+      <a href="http://www.codersforlabour.com" target="_blank" class="c4l"></a>
+    </footer>
+  </md-sidenav>
+  <main>
+    <header>
+      <md-icon (click)="sidenav.toggle()" class="sidenav-toggle">info_outline</md-icon>
+      <h1>Tax Calculator</h1>
+    </header>
+    <div id="slider" [ngClass]="{ 'open': !manualEntry && !sidenav.opened }">
+      <md-slider step="1" min="1" max="100" vertical (input)="onInputChange($event)" (change)="onInputChange($event)" value="22" #slider></md-slider>
     </div>
-  </div>
-</div>
-<md-slider step="1" min="1" max="100" style="width: 100%" (input)="onInputChange($event)" (change)="onInputChange($event)" value="22" #slider></md-slider>
-Salary: {{ salary | currency:'GBP':true:'1.0-0' }} / year
-<div *ngIf="current && proposed">
-  Allowance: {{ current.allowance }}<br/>
-  Taxable Income: {{ current.taxable | currency:'GBP':true:'1.2-2' }}<br/>
-  After Tax: {{ current.net | currency:'GBP':true:'1.2-2' }}<br/>
-  Change: <span *ngIf="proposed.tax - current.tax == 0">No Change</span><span *ngIf="proposed.tax - current.tax > 0">{{ proposed.tax - current.tax | currency:'GBP':true:'1.2-2' }} / year</span>
-  <br/>
-  <div style="float: left; width: 50%">
-    <pre style="padding: 10px">{{ current | json }}
-
-NI: {{ ni }}
-Take Home: {{ current?.net - ni }}
-    </pre>
-  </div>
-  <div style="float: left; width: 50%">
-    <pre style="padding: 10px">{{ proposed | json }}
-
-NI: {{ ni }}
-Take Home: {{ proposed?.net - ni }}
-    </pre>
-  </div>
-</div>
+    <div id="content" [ngClass]="{ 'slider': !manualEntry && !sidenav.opened }">
+      <div class="results" *ngIf="current && proposed">
+        <h5>Annual Salary</h5>
+        <div class="manual-input">
+          <input  [(ngModel)]="salary" currencyMask [options]="{ prefix: '£', precision: '0', allowNegative: false }" maxlength="9" (click)="manualEntry = true" />
+          <md-icon (click)="manualEntry = false" *ngIf="manualEntry">close</md-icon>
+        </div>
+        <div class="comparison">
+          <div class="left">
+              <h4>Current</h4>
+              <h5>Tax</h5>
+              <div class="amount">{{ current.tax | currency:'GBP':true:'1.2-2' }}</div>
+              <h5>Take Home</h5>
+              <div class="amount">{{ current.net / 12 | currency:'GBP':true:'1.2-2' }}<span>/mth</span></div>
+          </div>
+          <div class="right">
+              <h4>Labour</h4>
+              <h5>Tax</h5>
+              <div class="amount">{{ proposed.tax | currency:'GBP':true:'1.2-2' }}</div>
+              <h5>Take Home</h5>
+              <div class="amount">{{ proposed.net / 12 | currency:'GBP':true:'1.2-2' }}<span>/mth</span></div>
+          </div>
+        </div>
+        <h5>Tax Change</h5>
+        <div *ngIf="proposed.tax - current.tax != 0">
+          <div class="amount xl">{{ proposed.tax - current.tax | currency:'GBP':true:'1.2-2' }}<span>/yr</span></div>
+          <div class="amount xl">{{ (proposed.tax - current.tax) / 12 | currency:'GBP':true:'1.2-2' }}<span>/mth</span></div>
+          <div class="amount xl">{{ (proposed.tax - current.tax) / 52 | currency:'GBP':true:'1.2-2' }}<span>/wk</span></div>
+        </div>
+        <div class="amount xl" *ngIf="proposed.tax - current.tax == 0">NONE</div>
+      </div>
+      <div class="pay-for">
+        <h3>What could this pay for?</h3>
+      </div>
+    </div>
+  </main>
+</md-sidenav-container>

@@ -1,8 +1,244 @@
 /* You can add global styles to this file, and also import other style files */
 @import "material";
 
+$primary: #E4003B;
+$secondary: #C50037;
+$primary-font: 'Open Sans', Arial, Helvetica, sans-serif;
+
 html,body {
-    font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+    font-family: $primary-font;
+    margin: 0;
+    padding: 0;
+    background-color: $secondary;
+}
+
+html, body, md-sidenav-container, main {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+main {
+    > header {
+        color: #fff;
+        text-transform: uppercase;
+        text-align: center;
+        background-color: $primary;
+        padding: 18px;
+        position: relative;
+
+        .sidenav-toggle {
+            position: absolute;
+            top: 22px;
+            left: 17px;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 22px;
+        }
+    }
+}
+
+.sidenav-footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 14px;
+    color: #fff;
+    font-weight: 700;
+    background-color: $primary;
+
+    a {
+        color: #fff;
+        text-decoration: none;
+        display: block;
+    }
+
+    .c4l {
+        position: absolute;
+        top: 5px;
+        right: 8px;
+        background-image: url(http://www.codersforlabour.com/assets/logo-white.png);
+        width: 35px;
+        height: 40px;
+        background-size: cover;
+    }
+}
+
+#slider {
+    position: absolute;
+    top: 86px;
+    bottom: 20px;
+    width: 60px;
+    left: -100px;
+    background-color: #fff;
+    border-radius: 0 6px 6px 0;
+    padding: 20px 20px 20px 15px;
+    transition: left 0.5s ease-in-out;
+    
+    &.open {
+        left: 0;
+    }
+
+    md-slider {
+        &.mat-slider-vertical {
+            height: 100%;
+
+            .mat-slider-track-wrapper,
+            .mat-slider-track-background,
+            .mat-slider-track-fill {
+                width: 16px;
+            }
+
+            .mat-slider-track-fill {
+                background-color: $secondary;
+            }
+
+            .mat-slider-thumb-container {
+                .mat-slider-thumb {
+                    width: 40px;
+                    height: 40px;
+                    bottom: -20px;
+                    right: -27px;
+                    background-color: $primary;
+                    border: none;
+                }
+            }
+        }
+    }
+}
+
+#content {
+    overflow: hidden;
+    position: absolute;
+    transition: left 0.5s ease-in-out;
+    top: 66px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    &.slider {
+        left: 110px;
+    }
+
+    .results {
+        padding: 15px 15px 5px 15px;
+
+        h5 {
+            text-transform: uppercase;
+            color: #6f0015;
+            font-size: 16px;
+            font-weight: 800;
+            margin: 0;
+        }
+
+        .amount {
+            color: #fff;
+            font-weight: 800;
+            font-size: 16px;
+            line-height: 16px;
+            margin-bottom: 4px;
+
+            span {
+                font-size: 10px;
+            }
+
+            &.xl {
+                font-size: 36px;
+                line-height: 36px;
+
+                span {
+                    font-size: 24px;
+                }
+            }
+        }
+
+        .manual-input {
+            position: relative;
+
+            input {
+                position:relative;
+                background: none;
+                border: none;
+                font-size: 36px;
+                line-height: 36px;
+                color: #fff;
+                font-weight: 800;
+                font-family: $primary-font;
+                width: 100%;
+                text-align: left !important;
+                outline: none;
+                margin-top: -8px;
+            }
+
+            md-icon {
+                position: absolute;
+                right: 5px;
+                top: -1px;
+                color: #fff;
+                font-size: 36px;
+            }
+        }
+
+        .comparison {
+            padding-top: 8px;
+            margin-left: -12px;
+            margin-right: -12px;
+            overflow: hidden;
+            margin-bottom: 8px;
+
+            .left,
+            .right {
+                padding-left: 12px;
+                box-sizing: border-box;
+
+                h4 {
+                    color: #fff;
+                    font-weight: 800;
+                    text-transform: uppercase;
+                    margin: 0;
+                    font-size: 16px;
+                }
+            }
+
+            .left {
+                float: left;
+                width: 50%;
+                border-right: 1px solid #6f0015;
+            }
+
+            .right {
+                float: right;
+                width: 50%;
+            }
+        }
+    }
+
+    .pay-for {
+        position: absolute;
+        top: 360px;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: $primary;
+
+        h3 {
+            color: #fff;
+            text-align: center;
+            text-transform: uppercase;
+            font-size: 16px;
+        }
+    }
+}
+
+md-sidenav {
+    width: 300px;
+}
+
+.mat-sidenav-container {
+    background-color: $secondary;
 }
 
 .mat-slider-thumb.marker {
