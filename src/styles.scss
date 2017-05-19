@@ -1,5 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
-@import url("./material.css");
+@import "material";
 
 html,body {
     font-family: 'Open Sans', Arial, Helvetica, sans-serif;
@@ -20,4 +20,4 @@ html,body {
     width: 0;
     left: 6px;
     bottom: -30px;
-}
+} 
