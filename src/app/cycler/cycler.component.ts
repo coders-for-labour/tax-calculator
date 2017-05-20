@@ -27,9 +27,8 @@ export class CyclerComponent implements OnInit, AfterContentInit, OnDestroy {
 
   @HostListener("click")
   public onClick(): void {
-    clearInterval(this.timer);
     this.next();
-    this.timer = setInterval(() => this.next(), this.interval);
+    this.startTimer();
   }
 
   public ngOnInit() {
@@ -42,7 +41,7 @@ export class CyclerComponent implements OnInit, AfterContentInit, OnDestroy {
   }
 
   private onItemsUpdate(): void {
-    clearInterval(this.timer);
+    this.stopTimer();
     this.index = -1;
 
     if (this.children.length == 0)
@@ -53,7 +52,7 @@ export class CyclerComponent implements OnInit, AfterContentInit, OnDestroy {
       return;
     }
 
-    this.timer = setInterval(() => this.next(), this.interval);
+    this.startTimer();
     this.next();
   }
 
@@ -68,6 +67,15 @@ export class CyclerComponent implements OnInit, AfterContentInit, OnDestroy {
       });
 
       this.index = nextIndex;
+  }
+
+  private startTimer(): void {
+    this.stopTimer();
+    this.timer = setInterval(() => this.next(), this.interval);
+  }
+
+  private stopTimer(): void {
+    clearInterval(this.timer);
   }
 
   public ngOnDestroy(): void {

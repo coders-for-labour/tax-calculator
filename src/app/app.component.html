@@ -9,6 +9,9 @@
       <p>
         Use the slider on the left to adjust the annual salary, or tap on the salary at the top to enter your own.
       </p>
+      <p>
+        Certain information will cycle between yearly, monthly and weekly calculations. You can click these areas to manually change them.
+      </p>
       <h3>Please note:</h3>
       <ul>
         <li>This tool is for illustration purposes only.</li>
@@ -61,14 +64,14 @@
                   <h5>Tax</h5>
                   <div class="amount">{{ current.tax | currency:'GBP':true:'1.2-2' }}<span>/yr</span></div>
                   <h5>Take Home</h5> 
-                  <div class="amount">{{ current.net | currency:'GBP':true:'1.2-2' }}<span>/yr</span></div>
+                  <div class="amount">{{ current.net - ni | currency:'GBP':true:'1.2-2' }}<span>/yr</span></div>
               </div>
               <div class="right">
                   <h4>Labour</h4>
                   <h5>Tax</h5>
                   <div class="amount">{{ proposed.tax | currency:'GBP':true:'1.2-2' }}<span>/yr</span></div>
                   <h5>Take Home</h5>
-                  <div class="amount">{{ proposed.net | currency:'GBP':true:'1.2-2' }}<span>/yr</span></div>
+                  <div class="amount">{{ proposed.net - ni | currency:'GBP':true:'1.2-2' }}<span>/yr</span></div>
               </div>
             </cycler-item>
             <cycler-item>
@@ -77,14 +80,14 @@
                   <h5>Tax</h5>
                   <div class="amount">{{ current.tax / 12 | currency:'GBP':true:'1.2-2' }}<span>/mth</span></div>
                   <h5>Take Home</h5> 
-                  <div class="amount">{{ current.net / 12 | currency:'GBP':true:'1.2-2' }}<span>/mth</span></div>
+                  <div class="amount">{{ (current.net - ni) / 12 | currency:'GBP':true:'1.2-2' }}<span>/mth</span></div>
               </div>
               <div class="right">
                   <h4>Labour</h4>
                   <h5>Tax</h5>
                   <div class="amount">{{ proposed.tax / 12 | currency:'GBP':true:'1.2-2' }}<span>/mth</span></div>
                   <h5>Take Home</h5>
-                  <div class="amount">{{ proposed.net / 12 | currency:'GBP':true:'1.2-2' }}<span>/mth</span></div>
+                  <div class="amount">{{ (proposed.net - ni) / 12 | currency:'GBP':true:'1.2-2' }}<span>/mth</span></div>
               </div>
             </cycler-item>
             <cycler-item>
@@ -93,14 +96,14 @@
                   <h5>Tax</h5>
                   <div class="amount">{{ current.tax / 52 | currency:'GBP':true:'1.2-2' }}<span>/wk</span></div>
                   <h5>Take Home</h5> 
-                  <div class="amount">{{ current.net / 52 | currency:'GBP':true:'1.2-2' }}<span>/wk</span></div>
+                  <div class="amount">{{ (current.net - ni) / 52 | currency:'GBP':true:'1.2-2' }}<span>/wk</span></div>
               </div>
               <div class="right">
                   <h4>Labour</h4>
                   <h5>Tax</h5>
                   <div class="amount">{{ proposed.tax / 52 | currency:'GBP':true:'1.2-2' }}<span>/wk</span></div>
                   <h5>Take Home</h5>
-                  <div class="amount">{{ proposed.net / 52 | currency:'GBP':true:'1.2-2' }}<span>/wk</span></div>
+                  <div class="amount">{{ (proposed.net - ni) / 52 | currency:'GBP':true:'1.2-2' }}<span>/wk</span></div>
               </div>
             </cycler-item>
           </cycler>
