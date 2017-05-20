@@ -11,10 +11,12 @@ import { AppComponent } from './app.component';
 import { TaxService } from "./tax.service";
 import { NationalInsuranceService } from "./national-insurance.service";
 import { WcipfService } from "./wcipf.service";
+import { WelcomeDialogComponent } from './welcome-dialog/welcome-dialog.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    WelcomeDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -28,6 +30,7 @@ import { WcipfService } from "./wcipf.service";
     MaterialModule
   ],
   providers: [TaxService, NationalInsuranceService, WcipfService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [WelcomeDialogComponent]
 })
 export class AppModule { }

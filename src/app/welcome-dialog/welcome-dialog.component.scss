@@ -1,0 +1,17 @@
+@import "../../config";
+
+.content {
+    max-width: 500px;
+}
+
+.buttons {
+    text-align: center;
+}
+
+h2 {
+    margin: -24px -24px 0 -24px;
+    padding: 15px 24px;
+    background-color: $primary;
+    color: #fff;
+    text-transform: uppercase;
+}

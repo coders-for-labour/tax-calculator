@@ -1,20 +1,31 @@
 /* You can add global styles to this file, and also import other style files */
 @import "material";
-
-$primary: #E4003B;
-$secondary: #C50037;
-$primary-font: 'Open Sans', Arial, Helvetica, sans-serif;
+@import "config";
 
 html,body {
     font-family: $primary-font;
     margin: 0;
     padding: 0;
+    background-color: $primary;
 }
 
 html, body, md-sidenav-container, main {
     height: 100%;
     width: 100%;
     overflow: hidden;
+}
+
+.loader {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0;
+    right: 0;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 26px;
+    text-align: center;
 }
 
 main {
@@ -235,18 +246,24 @@ main {
     bottom: 0;
     left: 0;
     right: 0;
+    padding: 0 10px;
 
     &.slider {
-        left: 120px;
+        left: 110px;
+
+        .benefit,
+        .pay-for {
+            left: 10px;
+        }
     }
 
     .results {
-        padding: 15px 15px 5px 15px;
+        padding: 15px 5px;
 
         h5 {
             text-transform: uppercase;
             color: #6f0015;
-            font-size: 16px;
+            font-size: 12px;
             font-weight: 800;
             margin: 0;
             position: relative;
@@ -270,22 +287,30 @@ main {
                     }
                 }
             }
+
+            @media (orientation: portrait) and (min-width: 321px) {
+                font-size: 16px;
+            }
+
+            @media (min-width: 800px) {
+                font-size: 20px;
+            }
         }
 
         .amount {
             color: #fff;
             font-weight: 800;
-            font-size: 16px;
-            line-height: 16px;
-            margin-bottom: 4px;
+            font-size: 12px;
+            line-height: 12px;
+            margin-bottom: 5px;
 
             span {
                 font-size: 10px;
             }
 
             &.l {
-                font-size: 32px;
-                line-height: 32px;
+                font-size: 28px;
+                line-height: 28px;
 
                 span {
                     font-size: 20px;
@@ -304,6 +329,34 @@ main {
             &.xxl {
                 font-size: 50px;
                 line-height: 50px;
+            }
+
+            @media (orientation: portrait) and (min-width: 321px) {
+                font-size: 16px;
+                line-height: 16px;
+
+                &.l {
+                    font-size: 34px;
+                    line-height: 34px;
+                    
+                    span {
+                        font-size: 24px;
+                    }
+                }
+            }
+
+            @media (min-width: 800px) {
+                font-size: 20px;
+                line-height: 20px;
+
+                &.l {
+                    font-size: 42px;
+                    line-height: 42px;
+                    
+                    span {
+                        font-size: 32px;
+                    }
+                }
             }
         }
 
@@ -349,6 +402,7 @@ main {
             .left,
             .right {
                 padding-left: 12px;
+                padding-right: 12px;
                 box-sizing: border-box;
 
                 h4 {
@@ -363,12 +417,14 @@ main {
             .left {
                 float: left;
                 width: 50%;
+                padding-right: 5px;
                 border-right: 1px solid #6f0015;
             }
 
             .right {
                 float: right;
                 width: 50%;
+                padding-left: 6px;
             }
         }
 
@@ -386,13 +442,16 @@ main {
         }
     }
 
+    .benefit,
     .pay-for {
         position: absolute;
-        top: 360px;
+        top: 310px;
         bottom: 0;
         left: 0;
         right: 0;
         background-color: $primary;
+        overflow: auto;
+        transition: left 0.5s ease-in-out;
 
         h3 {
             color: #fff;
@@ -413,6 +472,33 @@ main {
                 padding: 5px 10px;
                 border-top: 1px solid $secondary;
             }
+        }
+
+        @media all and (orientation: landscape) and (max-width: 800px) { 
+            top: 192px;
+        }
+
+        @media (orientation: portrait) and (min-width: 321px) {
+            top: 360px;
+        }
+
+        @media (min-width: 800px) {
+            top: 415px;
+        }
+    }
+
+    .benefit {
+        padding: 10px;
+        color: #fff;
+        font-weight: 700;
+        font-size: 13px;
+
+        @media (orientation: portrait) and (min-width: 321px) {
+            font-size: 16px;
+        }
+
+        @media (min-width: 800px) {
+            font-size: 18px;
         }
     }
 }

@@ -40,7 +40,7 @@
     </div>
     <div id="content" [ngClass]="{ 'slider': !manualEntry }">
       <div class="results" *ngIf="current && proposed">
-        <h5>Annual Salary <span *ngIf="!manualEntry">(Tap to edit)</span></h5>
+        <h5>Salary <span *ngIf="!manualEntry">(Tap to edit)</span></h5>
         <div class="manual-input">
           <input inputmode="numeric" [(ngModel)]="salary" currencyMask [options]="{ prefix: '£', precision: '0', allowNegative: false }" maxlength="9" (click)="manualEntry = true" />
           <md-icon (click)="manualEntry = false" *ngIf="manualEntry">close</md-icon>
@@ -86,6 +86,14 @@
           </li>
         </ul>
       </div>-->
+      <ng-template [ngIf]="current && proposed">
+        <div class="benefit" *ngIf="proposed.tax - current.tax > 0">
+          Looks like you'd be paying more tax under Labour. This might be a concern but it will be made up in other ways. Like having a fully funded NHS.
+        </div>
+        <div class="benefit" *ngIf="proposed.tax - current.tax == 0">
+          You won't be paying any more tax. Even so, you'll still get great stuff like, a fully funded NHS, no tuition fees.
+        </div>
+      </ng-template>
     </div>
   </main>
 </md-sidenav-container>

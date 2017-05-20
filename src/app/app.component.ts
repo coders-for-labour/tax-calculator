@@ -1,16 +1,17 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { MdSliderChange, MdSlider } from "@angular/material";
+import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
+import { MdSliderChange, MdSlider, MdDialog } from "@angular/material";
 import { TaxService, CalculationResult } from "./tax.service";
 import { NationalInsuranceService } from "./national-insurance.service";
 import { WcipfService, WcipfResultItem } from "./wcipf.service";
 import { CURRENT_TAX, PROPOSED_TAX, NATIONAL_INSURANCE } from "./configuration";
+import { WelcomeDialogComponent } from "./welcome-dialog/welcome-dialog.component";
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit { 
+export class AppComponent implements OnInit, AfterViewInit { 
   private _salary: number = 0;
   private _manualEntry: boolean = false;
   public ni: number = 0;
@@ -48,10 +49,15 @@ export class AppComponent implements OnInit {
   constructor(
     private tax: TaxService,
     private nationalInsurance: NationalInsuranceService,
-    private wcipf: WcipfService) {}
+    private wcipf: WcipfService,
+    private dialog: MdDialog) {}
 
   public ngOnInit(): void {
     setTimeout(() => this.sliderUpdate(this.slider.value), 10);
+  }
+
+  public ngAfterViewInit(): void {
+    setTimeout(() => this.dialog.open(WelcomeDialogComponent), 10);
   }
 
   public onInputChange(event: MdSliderChange): void {
