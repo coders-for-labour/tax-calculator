@@ -80,12 +80,56 @@ main {
     
     &.open {
         left: 0;
+
+        .markers {
+            display: block;
+        }
+    }
+
+    .markers {
+        position: absolute;
+        left: 53px;
+        top: 20px;
+        bottom: 20px;
+        padding: 8px; 
+        display: none;
+
+        > div {
+            top: 0;
+            bottom: 0;
+            position: absolute;
+
+            label {
+                position: absolute;
+                bottom: -14px;
+                left: 0;
+                background-color: #000;
+                color: #fff;
+                padding: 6px 0;
+                text-align: center;
+                font-size: 12px;
+                font-weight: 800;
+                width: 48px;
+
+                &:before {
+                    content: "";
+                    position: absolute;
+                    left: -8px;
+                    width: 0;
+                    height: 0;
+                    border-style: solid;
+                    border-width: 8px 8px 8px 0;
+                    border-color: transparent #000000 transparent transparent;
+                }
+            }
+        }
     }
 
     md-slider {
         &.mat-slider-vertical {
             height: 100%;
-
+            
+            .mat-slider-wrapper,
             .mat-slider-track-wrapper,
             .mat-slider-track-background,
             .mat-slider-track-fill {
@@ -101,7 +145,7 @@ main {
                     width: 40px;
                     height: 40px;
                     bottom: -20px;
-                    right: -27px;
+                    right: -20px;
                     background-color: $primary;
                     border: none;
                 }
@@ -237,23 +281,11 @@ md-sidenav {
     width: 300px;
 }
 
+.mat-slider {
+    &.labels {
+    }
+}
+
 .mat-sidenav-container {
     background-color: $secondary;
 }
-
-.mat-slider-thumb.marker {
-    width: 120px;
-    height: 60px;
-    top: -22px;
-    right: -95px;
-}
-
-.mat-slider-thumb.marker:after {
-    position: absolute;
-    content: "";
-    border-left: 1px solid #000;
-    height: 30px;
-    width: 0;
-    left: 6px;
-    bottom: -30px;
-} 

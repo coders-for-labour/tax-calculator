@@ -21,6 +21,14 @@
       <h1>Tax Calculator</h1>
     </header>
     <div id="slider" [ngClass]="{ 'open': !manualEntry && !sidenav.opened }">
+      <div class="markers">
+        <div style="transform: translateY(-44.4444%);" (click)="setSlider(45)">
+          <label>£80k</label>
+        </div>
+        <div style="transform: translateY(-53.35%);" (click)="setSlider(54)">
+          <label>£123k</label>
+        </div>
+      </div>
       <md-slider step="1" min="1" max="100" vertical (input)="onInputChange($event)" (change)="onInputChange($event)" value="22" #slider></md-slider>
     </div>
     <div id="content" [ngClass]="{ 'slider': !manualEntry && !sidenav.opened }">

@@ -54,6 +54,11 @@ export class AppComponent implements OnInit {
       this.sliderUpdate(event.value);
   }
 
+  public setSlider(value: number): void {
+    this.slider.value = value;
+    this.sliderUpdate(value);
+  }
+
   private sliderUpdate(input: number): void {
     if (input == 1) {
         this.salary = 10000;
