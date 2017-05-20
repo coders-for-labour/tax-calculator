@@ -238,6 +238,27 @@ main {
                     right: -20px;
                     background-color: $primary;
                     border: none;
+                    
+                    &:before,
+                    &:after {
+                        position: absolute;
+                        left: 0;
+                        right: 0;
+                        font-family: "Material Icons";
+                        text-align: center;
+                        color: #fff;
+                        font-size: 30px;
+                    }
+
+                    &:before {
+                        top: -3px;
+                        content: "\E5CE";
+                    }
+
+                    &:after {
+                        bottom: -3px;
+                        content: "\E5CF";
+                    }
                 }
             }
         }
