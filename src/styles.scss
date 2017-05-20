@@ -79,6 +79,10 @@ main {
     bottom: 50px;
     overflow: auto;
     padding: 15px;
+
+    h3 {
+        margin-top: 0;
+    }
 }
 
 .sidenav-footer {
@@ -362,6 +366,8 @@ main {
 
         .manual-input {
             position: relative;
+            border-radius: 4px;
+            background-color: #fff;
 
             @media (orientation: landscape) and (max-width: 800px) {
                 max-width: 53%;
@@ -372,21 +378,21 @@ main {
                 background: none;
                 border: none;
                 font-size: 36px;
-                line-height: 36px;
-                color: #fff;
+                height: 41px;
+                color: #6f0015;
                 font-weight: 800;
                 font-family: $primary-font;
                 width: 100%;
                 text-align: left !important;
                 outline: none;
-                margin-top: -8px;
+                padding-left: 5px;
             }
 
             md-icon {
                 position: absolute;
-                right: 5px;
-                top: -1px;
-                color: #fff;
+                right: 15px;
+                top: 4px;
+                color: #6f0015;
                 font-size: 36px;
                 cursor: pointer;
             }

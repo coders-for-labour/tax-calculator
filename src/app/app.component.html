@@ -2,13 +2,18 @@
   <md-sidenav #sidenav mode="push" opened="false">
     <header class="sidenav-header">
         <md-icon (click)="sidenav.toggle()">close</md-icon>
-        About
+        Info
     </header>
     <div class="sidenav-content">
+      <h3>Instructions</h3>
+      <p>
+        Use the slider on the left to adjust the annual salary, or tap on the salary at the top to enter your own.
+      </p>
+      <h3>Please note:</h3>
       <ul>
-        <li>For illustration purposes only.</li>
-        <li>Does not take into account additional deductions e.g. childcare vouchers.</li>
-        <li>Take home amount includes National Insurance deductions.</li>
+        <li>This tool is for illustration purposes only.</li>
+        <li>This tool does not take into account additional deductions e.g. childcare vouchers, pensions, etc.</li>
+        <li>The take home amount includes National Insurance deductions which may be calculated slightly differently than HMRC would.</li>
       </ul>
     </div>
     <footer class="sidenav-footer">
