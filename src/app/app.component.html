@@ -1,9 +1,10 @@
 <md-sidenav-container>
   <md-sidenav #sidenav mode="push" opened="false">
-    <button md-mini-fab (click)="sidenav.toggle()">
-      <md-icon>close</md-icon>
-    </button>
-    <div>
+    <header class="sidenav-header">
+        <md-icon (click)="sidenav.toggle()">close</md-icon>
+        About
+    </header>
+    <div class="sidenav-content">
       <ul>
         <li>For illustration purposes only.</li>
         <li>Does not take into account additional deductions e.g. childcare vouchers.</li>
@@ -20,7 +21,7 @@
       <md-icon (click)="sidenav.toggle()" class="sidenav-toggle">info_outline</md-icon>
       <h1>Tax Calculator</h1>
     </header>
-    <div id="slider" [ngClass]="{ 'open': !manualEntry && !sidenav.opened }">
+    <div id="slider" [ngClass]="{ 'open': !manualEntry }">
       <div class="markers">
         <div (click)="setSlider(47)" class="avg">
           <label>UK Avg</label>
@@ -31,17 +32,17 @@
         <div (click)="setSlider(126)" class="k150">
           <label>£150k</label>
         </div>
-        <div class="top5">
+        <div (click)="setSlider(97)" class="top5">
           <label>Top 5%</label>
         </div>
       </div>
       <md-slider step="1" min="1" max="150" vertical (input)="onInputChange($event)" (change)="onInputChange($event)" value="47" #slider></md-slider>
     </div>
-    <div id="content" [ngClass]="{ 'slider': !manualEntry && !sidenav.opened }">
+    <div id="content" [ngClass]="{ 'slider': !manualEntry }">
       <div class="results" *ngIf="current && proposed">
         <h5>Annual Salary <span *ngIf="!manualEntry">(Tap to edit)</span></h5>
         <div class="manual-input">
-          <input  [(ngModel)]="salary" currencyMask [options]="{ prefix: '£', precision: '0', allowNegative: false }" maxlength="9" (click)="manualEntry = true" />
+          <input inputmode="numeric" [(ngModel)]="salary" currencyMask [options]="{ prefix: '£', precision: '0', allowNegative: false }" maxlength="9" (click)="manualEntry = true" />
           <md-icon (click)="manualEntry = false" *ngIf="manualEntry">close</md-icon>
         </div>
         <div class="comparison">

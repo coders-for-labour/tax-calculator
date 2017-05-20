@@ -9,7 +9,6 @@ html,body {
     font-family: $primary-font;
     margin: 0;
     padding: 0;
-    background-color: $secondary;
 }
 
 html, body, md-sidenav-container, main {
@@ -19,6 +18,13 @@ html, body, md-sidenav-container, main {
 }
 
 main {
+    position: relative;
+    background-color: $secondary;
+
+    @media (min-width: 800px) {
+        max-width: 600px;
+    }
+
     > header {
         color: #fff;
         text-transform: uppercase;
@@ -31,6 +37,7 @@ main {
             position: absolute;
             top: 22px;
             left: 17px;
+            cursor: pointer;
         }
 
         h1 {
@@ -38,6 +45,29 @@ main {
             font-size: 22px;
         }
     }
+}
+
+.sidenav-header {
+    padding: 14px;
+    color: #fff;
+    font-weight: 700;
+    background-color: $primary;
+    text-transform: uppercase;
+
+    md-icon {
+        position: absolute;
+        top: 13px;
+        right: 13px;
+        cursor: pointer;
+    }
+}
+
+.sidenav-content {
+    position: absolute;
+    top: 50px;
+    bottom: 50px;
+    overflow: auto;
+    padding: 15px;
 }
 
 .sidenav-footer {
@@ -71,11 +101,11 @@ main {
     position: absolute;
     top: 86px;
     bottom: 20px;
-    width: 60px;
-    left: -100px;
+    width: 110px;
+    left: -110px;
     background-color: #fff;
     border-radius: 0 6px 6px 0;
-    padding: 20px 20px 20px 15px;
+    padding: 20px 0;
     transition: left 0.5s ease-in-out;
     
     &.open {
@@ -88,21 +118,20 @@ main {
 
     .markers {
         position: absolute;
-        left: 53px;
+        left: 0;
         top: 20px;
         bottom: 20px;
-        padding: 8px; 
         display: none;
 
         > div {
-            top: 0;
-            bottom: 0;
+            top: 8px;
+            bottom: 8px;
             position: absolute;
 
             label {
                 position: absolute;
                 bottom: -14px;
-                left: 0;
+                left: 70px;
                 background-color: #000;
                 color: #fff;
                 padding: 6px 0;
@@ -128,8 +157,8 @@ main {
                 label {
                     left: auto;
                     bottom: -22px;
-                    right: 30px;
-                    width: 31px;
+                    right: -36px;
+                    width: 36px;
                     background-color: $secondary;
 
                     &:before {
@@ -145,32 +174,39 @@ main {
             }
 
             &.avg {
-                transform: translateY(-31.3%);
+                transform: translateY(-30.8725%);
             }
 
             &.k80 {
-                transform: translateY(-63.8%);
+                transform: translateY(-64.4295%);
             }
 
             &.k150 {
-                transform: translateY(-82.7%);
+                transform: translateY(-83.8926%);
             }
 
             &.top5 {
-                transform: translateY(-63.8%);
+                transform: translateY(-64.4295%);
             }
         }
     }
 
     md-slider {
+        margin-left: 34px;
+
         &.mat-slider-vertical {
             height: 100%;
+            width: 38px;
             
             .mat-slider-wrapper,
             .mat-slider-track-wrapper,
             .mat-slider-track-background,
             .mat-slider-track-fill {
                 width: 16px;
+            }
+
+            .mat-slider-wrapper {
+                left: 11px;
             }
 
             .mat-slider-track-fill {
@@ -274,6 +310,10 @@ main {
         .manual-input {
             position: relative;
 
+            @media (orientation: landscape) and (max-width: 800px) {
+                max-width: 53%;
+            }
+
             input {
                 position:relative;
                 background: none;
@@ -295,6 +335,7 @@ main {
                 top: -1px;
                 color: #fff;
                 font-size: 36px;
+                cursor: pointer;
             }
         }
 
@@ -328,6 +369,19 @@ main {
             .right {
                 float: right;
                 width: 50%;
+            }
+        }
+
+        @media all and (orientation: landscape) and (max-width: 800px) { 
+            .comparison {
+                width: 60%;
+            }
+
+            .change {
+                position: absolute;
+                top: 15px;
+                right: 15px;
+                width: 40%;
             }
         }
     }
@@ -369,4 +423,11 @@ md-sidenav {
 
 .mat-sidenav-container {
     background-color: $secondary;
+
+    @media (min-width: 800px) {
+        background-image: url(http://www.labour.org.uk/page/-/Images/vote-labour-bg-min.jpg);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: top right;
+    }
 }
