@@ -12,11 +12,14 @@ import { TaxService } from "./tax.service";
 import { NationalInsuranceService } from "./national-insurance.service";
 import { WcipfService } from "./wcipf.service";
 import { WelcomeDialogComponent } from './welcome-dialog/welcome-dialog.component';
+import { CyclerComponent, CyclerItemComponent } from './cycler/cycler.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    WelcomeDialogComponent
+    WelcomeDialogComponent,
+    CyclerComponent,
+    CyclerItemComponent
   ],
   imports: [
     BrowserModule,

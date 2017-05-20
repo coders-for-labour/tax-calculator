@@ -54,20 +54,56 @@
           <md-icon (click)="manualEntry = false" *ngIf="manualEntry">close</md-icon>
         </div>
         <div class="comparison">
-          <div class="left">
-              <h4>Current</h4>
-              <h5>Tax</h5>
-              <div class="amount">{{ current.tax | currency:'GBP':true:'1.2-2' }}</div>
-              <h5>Take Home</h5>
-              <div class="amount">{{ current.net / 12 | currency:'GBP':true:'1.2-2' }}<span>/mth</span></div>
-          </div>
-          <div class="right">
-              <h4>Labour</h4>
-              <h5>Tax</h5>
-              <div class="amount">{{ proposed.tax | currency:'GBP':true:'1.2-2' }}</div>
-              <h5>Take Home</h5>
-              <div class="amount">{{ proposed.net / 12 | currency:'GBP':true:'1.2-2' }}<span>/mth</span></div>
-          </div>
+          <cycler>
+            <cycler-item>
+              <div class="left">
+                  <h4>Current</h4>
+                  <h5>Tax</h5>
+                  <div class="amount">{{ current.tax | currency:'GBP':true:'1.2-2' }}<span>/yr</span></div>
+                  <h5>Take Home</h5> 
+                  <div class="amount">{{ current.net | currency:'GBP':true:'1.2-2' }}<span>/yr</span></div>
+              </div>
+              <div class="right">
+                  <h4>Labour</h4>
+                  <h5>Tax</h5>
+                  <div class="amount">{{ proposed.tax | currency:'GBP':true:'1.2-2' }}<span>/yr</span></div>
+                  <h5>Take Home</h5>
+                  <div class="amount">{{ proposed.net | currency:'GBP':true:'1.2-2' }}<span>/yr</span></div>
+              </div>
+            </cycler-item>
+            <cycler-item>
+              <div class="left">
+                  <h4>Current</h4>
+                  <h5>Tax</h5>
+                  <div class="amount">{{ current.tax / 12 | currency:'GBP':true:'1.2-2' }}<span>/mth</span></div>
+                  <h5>Take Home</h5> 
+                  <div class="amount">{{ current.net / 12 | currency:'GBP':true:'1.2-2' }}<span>/mth</span></div>
+              </div>
+              <div class="right">
+                  <h4>Labour</h4>
+                  <h5>Tax</h5>
+                  <div class="amount">{{ proposed.tax / 12 | currency:'GBP':true:'1.2-2' }}<span>/mth</span></div>
+                  <h5>Take Home</h5>
+                  <div class="amount">{{ proposed.net / 12 | currency:'GBP':true:'1.2-2' }}<span>/mth</span></div>
+              </div>
+            </cycler-item>
+            <cycler-item>
+              <div class="left">
+                  <h4>Current</h4>
+                  <h5>Tax</h5>
+                  <div class="amount">{{ current.tax / 52 | currency:'GBP':true:'1.2-2' }}<span>/wk</span></div>
+                  <h5>Take Home</h5> 
+                  <div class="amount">{{ current.net / 52 | currency:'GBP':true:'1.2-2' }}<span>/wk</span></div>
+              </div>
+              <div class="right">
+                  <h4>Labour</h4>
+                  <h5>Tax</h5>
+                  <div class="amount">{{ proposed.tax / 52 | currency:'GBP':true:'1.2-2' }}<span>/wk</span></div>
+                  <h5>Take Home</h5>
+                  <div class="amount">{{ proposed.net / 52 | currency:'GBP':true:'1.2-2' }}<span>/wk</span></div>
+              </div>
+            </cycler-item>
+          </cycler>
         </div>
         <div class="change">
           <h5>
