@@ -1,5 +1,6 @@
 import { TaxConfig } from "./tax.service";
 import { NIBands } from "./national-insurance.service";
+import { WcipfItem } from "./wcipf.service";
 
 export const NATIONAL_INSURANCE: NIBands = {
   primary: {
@@ -33,3 +34,16 @@ export const PROPOSED_TAX: TaxConfig = {
       extra: { start: 123000, rate: 50 }
     }
 }
+
+export const WCIPF_DATA: WcipfItem[] = [
+    {
+      name: "Junior Doctor",
+      plural: "Junior Doctors",
+      cost: 30000
+    },
+    {
+      name: "School Meal",
+      plural: "School Meals",
+      cost: 3.00
+    }
+];

@@ -10,6 +10,7 @@ import { AppComponent } from './app.component';
 
 import { TaxService } from "./tax.service";
 import { NationalInsuranceService } from "./national-insurance.service";
+import { WcipfService } from "./wcipf.service";
 
 @NgModule({
   declarations: [
@@ -26,7 +27,7 @@ import { NationalInsuranceService } from "./national-insurance.service";
   exports: [
     MaterialModule
   ],
-  providers: [TaxService, NationalInsuranceService],
+  providers: [TaxService, NationalInsuranceService, WcipfService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

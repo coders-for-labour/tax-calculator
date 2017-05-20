@@ -22,18 +22,27 @@
     </header>
     <div id="slider" [ngClass]="{ 'open': !manualEntry && !sidenav.opened }">
       <div class="markers">
+        <div style="transform: translateY(-21.8%);" (click)="setSlider(22)">
+          <label>Avg</label>
+        </div>
         <div style="transform: translateY(-44.4444%);" (click)="setSlider(45)">
           <label>£80k</label>
         </div>
-        <div style="transform: translateY(-53.35%);" (click)="setSlider(54)">
-          <label>£123k</label>
+        <div style="transform: translateY(-50.5051%);" (click)="setSlider(51)">
+          <label>£100k</label>
+        </div>
+        <div style="transform: translateY(-69%);" (click)="setSlider(70)">
+          <label>£250k</label>
+        </div>
+        <div style="transform: translateY(-44.4444%);" class="top5">
+          <label>Top 5%</label>
         </div>
       </div>
       <md-slider step="1" min="1" max="100" vertical (input)="onInputChange($event)" (change)="onInputChange($event)" value="22" #slider></md-slider>
     </div>
     <div id="content" [ngClass]="{ 'slider': !manualEntry && !sidenav.opened }">
       <div class="results" *ngIf="current && proposed">
-        <h5>Annual Salary</h5>
+        <h5>Annual Salary <span *ngIf="!manualEntry">(Tap to edit)</span></h5>
         <div class="manual-input">
           <input  [(ngModel)]="salary" currencyMask [options]="{ prefix: '£', precision: '0', allowNegative: false }" maxlength="9" (click)="manualEntry = true" />
           <md-icon (click)="manualEntry = false" *ngIf="manualEntry">close</md-icon>
@@ -62,8 +71,13 @@
         </div>
         <div class="amount xl" *ngIf="proposed.tax - current.tax == 0">NONE</div>
       </div>
-      <div class="pay-for">
-        <h3>What could this pay for?</h3>
+      <div class="pay-for" *ngIf="wcipfResults && wcipfResults.length > 0">
+        <h3>Could pay for any of these</h3>
+        <ul>
+          <li *ngFor="let item of wcipfResults">
+            {{ item.total | number:'1.0-0' }} {{ item.total > 1 && item.plural ? item.plural : item.name }} / yr
+          </li>
+        </ul>
       </div>
     </div>
   </main>

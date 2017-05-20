@@ -1,19 +1,22 @@
 import { TestBed, async, ComponentFixture } from '@angular/core/testing';
+import { FormsModule } from '@angular/forms';
 import { MaterialModule } from "@angular/material";
+import { CurrencyMaskModule } from "ng2-currency-mask";
 import { AppComponent } from './app.component';
 import { TaxService } from './tax.service';
 import { NationalInsuranceService } from './national-insurance.service';
+import { WcipfService } from "./wcipf.service";
 
 describe('AppComponent', () => {
   let component : AppComponent;
   let fixture: ComponentFixture<AppComponent>;
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [MaterialModule],
+      imports: [MaterialModule, CurrencyMaskModule, FormsModule],
       declarations: [
         AppComponent
       ],
-      providers: [TaxService, NationalInsuranceService]
+      providers: [TaxService, NationalInsuranceService, WcipfService]
     }).compileComponents().then(() => {
       fixture = TestBed.createComponent(AppComponent);
       component = fixture.componentInstance;
@@ -23,15 +26,6 @@ describe('AppComponent', () => {
 
   it('should create the app', async(() => {
     expect(component).toBeTruthy();
-  }));
-
-  it(`should have as title 'app works!'`, async(() => {
-    expect(component.title).toEqual('app works!');
-  }));
-
-  it('should render title in a h1 tag', async(() => {
-    const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain('app works!');
   }));
 
   it('should display allowance of £11,509', async(() => {

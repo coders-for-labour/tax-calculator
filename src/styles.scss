@@ -122,6 +122,26 @@ main {
                     border-color: transparent #000000 transparent transparent;
                 }
             }
+
+            &.top5 {
+                label {
+                    left: auto;
+                    bottom: -22px;
+                    right: 30px;
+                    width: 31px;
+                    background-color: $secondary;
+
+                    &:before {
+                        left: auto;
+                        right: -8px;
+                        top: 50%;
+                        margin-top: -8px;
+                        border-style: solid;
+                        border-width: 8px 0 8px 8px;
+                        border-color: transparent transparent transparent $secondary;
+                    }
+                }
+            }
         }
     }
 
@@ -176,6 +196,10 @@ main {
             font-size: 16px;
             font-weight: 800;
             margin: 0;
+
+            span {
+                font-size: 12px;
+            }
         }
 
         .amount {
@@ -273,17 +297,26 @@ main {
             text-align: center;
             text-transform: uppercase;
             font-size: 16px;
+            margin: 10px 0;
+        }
+
+        ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+
+            li {
+                color: #fff;
+                font-weight: 500;
+                padding: 5px 10px;
+                border-top: 1px solid $secondary;
+            }
         }
     }
 }
 
 md-sidenav {
     width: 300px;
-}
-
-.mat-slider {
-    &.labels {
-    }
 }
 
 .mat-sidenav-container {

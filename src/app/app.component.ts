@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MdSliderChange, MdSlider } from "@angular/material";
 import { TaxService, CalculationResult } from "./tax.service";
 import { NationalInsuranceService } from "./national-insurance.service";
+import { WcipfService, WcipfResultItem } from "./wcipf.service";
 import { CURRENT_TAX, PROPOSED_TAX, NATIONAL_INSURANCE } from "./configuration";
 
 @Component({
@@ -39,12 +40,15 @@ export class AppComponent implements OnInit {
   public current: CalculationResult;
   public proposed: CalculationResult;
 
+  public wcipfResults: WcipfResultItem[];
+
   @ViewChild("slider")
   public slider: MdSlider;
 
   constructor(
     private tax: TaxService,
-    private nationalInsurance: NationalInsuranceService) {}
+    private nationalInsurance: NationalInsuranceService,
+    private wcipf: WcipfService) {}
 
   public ngOnInit(): void {
     setTimeout(() => this.sliderUpdate(this.slider.value), 10);
@@ -92,5 +96,6 @@ export class AppComponent implements OnInit {
     this.current = this.tax.calculate(this._salary, CURRENT_TAX);
     this.proposed = this.tax.calculate(this._salary, PROPOSED_TAX);
     this.ni = this.nationalInsurance.calculate(this._salary, NATIONAL_INSURANCE);
+    this.wcipfResults = this.wcipf.get(this.proposed.tax - this.current.tax);
   }
 }
