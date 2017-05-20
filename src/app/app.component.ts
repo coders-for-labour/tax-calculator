@@ -70,24 +70,20 @@ export class AppComponent implements OnInit {
     }
 
     var minp = 0;
-    var maxp = 100;
+    var maxp = 150;
 
     var minv = Math.log(10000);
-    var maxv = Math.log(1000000);
+    var maxv = Math.log(250000);
 
     var scale = (maxv-minv) / (maxp-minp);
-    var value = Math.exp(minv + scale*(input-minp));
+    var value = Math.exp(minv + scale * (input - minp));
 
     if(value < 100000)
-      value = Math.round(value/500)*500;
+      value = Math.round(value / 500) * 500;
+    else if (value < 130000)
+      value = Math.round(value / 1000) * 1000;
     else
-      value = Math.round(value/10000)*10000;
-
-    if (value == 79500)
-      value = 80000;
-
-    if (value == 120000)
-      value = 123000;
+      value = Math.round(value / 5000) * 5000;
 
     this.salary = value;
   }

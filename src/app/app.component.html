@@ -22,23 +22,20 @@
     </header>
     <div id="slider" [ngClass]="{ 'open': !manualEntry && !sidenav.opened }">
       <div class="markers">
-        <div style="transform: translateY(-21.8%);" (click)="setSlider(22)">
-          <label>Avg</label>
+        <div (click)="setSlider(47)" class="avg">
+          <label>UK Avg</label>
         </div>
-        <div style="transform: translateY(-44.4444%);" (click)="setSlider(45)">
+        <div (click)="setSlider(97)" class="k80">
           <label>£80k</label>
         </div>
-        <div style="transform: translateY(-50.5051%);" (click)="setSlider(51)">
-          <label>£100k</label>
+        <div (click)="setSlider(126)" class="k150">
+          <label>£150k</label>
         </div>
-        <div style="transform: translateY(-69%);" (click)="setSlider(70)">
-          <label>£250k</label>
-        </div>
-        <div style="transform: translateY(-44.4444%);" class="top5">
+        <div class="top5">
           <label>Top 5%</label>
         </div>
       </div>
-      <md-slider step="1" min="1" max="100" vertical (input)="onInputChange($event)" (change)="onInputChange($event)" value="22" #slider></md-slider>
+      <md-slider step="1" min="1" max="150" vertical (input)="onInputChange($event)" (change)="onInputChange($event)" value="47" #slider></md-slider>
     </div>
     <div id="content" [ngClass]="{ 'slider': !manualEntry && !sidenav.opened }">
       <div class="results" *ngIf="current && proposed">
@@ -63,22 +60,31 @@
               <div class="amount">{{ proposed.net / 12 | currency:'GBP':true:'1.2-2' }}<span>/mth</span></div>
           </div>
         </div>
-        <h5>Tax Change</h5>
-        <div *ngIf="proposed.tax - current.tax != 0">
-          <div class="amount xl">{{ proposed.tax - current.tax | currency:'GBP':true:'1.2-2' }}<span>/yr</span></div>
-          <div class="amount xl">{{ (proposed.tax - current.tax) / 12 | currency:'GBP':true:'1.2-2' }}<span>/mth</span></div>
-          <div class="amount xl">{{ (proposed.tax - current.tax) / 52 | currency:'GBP':true:'1.2-2' }}<span>/wk</span></div>
+        <div class="change">
+          <h5>
+            <!--<div class="change-symbols">
+              <i [ngClass]="{ active: proposed.tax - current.tax > 0 }">+</i>
+              /
+              <i [ngClass]="{ active: proposed.tax - current.tax < 0 }">-</i>
+            </div>-->
+            Tax Change
+          </h5>
+          <div *ngIf="proposed.tax - current.tax != 0">
+            <div class="amount l">{{ proposed.tax - current.tax > 0 ? '+' : '' }}{{ proposed.tax - current.tax | currency:'GBP':true:'1.2-2' }}<span>/yr</span></div>
+            <div class="amount l">{{ proposed.tax - current.tax > 0 ? '+' : '' }}{{ (proposed.tax - current.tax) / 12 | currency:'GBP':true:'1.2-2' }}<span>/mth</span></div>
+            <div class="amount l">{{ proposed.tax - current.tax > 0 ? '+' : '' }}{{ (proposed.tax - current.tax) / 52 | currency:'GBP':true:'1.2-2' }}<span>/wk</span></div>
+          </div>
+          <div class="amount xxl" *ngIf="proposed.tax - current.tax == 0">NONE</div>
         </div>
-        <div class="amount xl" *ngIf="proposed.tax - current.tax == 0">NONE</div>
       </div>
-      <div class="pay-for" *ngIf="wcipfResults && wcipfResults.length > 0">
+      <!--<div class="pay-for" *ngIf="wcipfResults && wcipfResults.length > 0">
         <h3>Could pay for any of these</h3>
         <ul>
           <li *ngFor="let item of wcipfResults">
             {{ item.total | number:'1.0-0' }} {{ item.total > 1 && item.plural ? item.plural : item.name }} / yr
           </li>
         </ul>
-      </div>
+      </div>-->
     </div>
   </main>
 </md-sidenav-container>

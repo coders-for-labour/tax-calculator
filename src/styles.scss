@@ -123,7 +123,8 @@ main {
                 }
             }
 
-            &.top5 {
+            &.top5,
+            &.avg {
                 label {
                     left: auto;
                     bottom: -22px;
@@ -141,6 +142,22 @@ main {
                         border-color: transparent transparent transparent $secondary;
                     }
                 }
+            }
+
+            &.avg {
+                transform: translateY(-31.3%);
+            }
+
+            &.k80 {
+                transform: translateY(-63.8%);
+            }
+
+            &.k150 {
+                transform: translateY(-82.7%);
+            }
+
+            &.top5 {
+                transform: translateY(-63.8%);
             }
         }
     }
@@ -196,9 +213,26 @@ main {
             font-size: 16px;
             font-weight: 800;
             margin: 0;
+            position: relative;
 
             span {
                 font-size: 12px;
+            }
+
+            .change-symbols {
+                position: absolute;
+                font-size: 20px;
+                right: 5px;
+                top: -2px;
+                color: #910029;
+
+                i {
+                    font-style: normal;
+
+                    &.active {
+                        color: #fff;
+                    }
+                }
             }
         }
 
@@ -213,6 +247,15 @@ main {
                 font-size: 10px;
             }
 
+            &.l {
+                font-size: 32px;
+                line-height: 32px;
+
+                span {
+                    font-size: 20px;
+                }
+            }
+
             &.xl {
                 font-size: 36px;
                 line-height: 36px;
@@ -220,6 +263,11 @@ main {
                 span {
                     font-size: 24px;
                 }
+            }
+
+            &.xxl {
+                font-size: 50px;
+                line-height: 50px;
             }
         }
 
