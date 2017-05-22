@@ -15,19 +15,6 @@ html, body, md-sidenav-container, main {
     overflow: hidden;
 }
 
-.loader {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    left: 0;
-    right: 0;
-    color: #fff;
-    text-transform: uppercase;
-    font-weight: bold;
-    font-size: 26px;
-    text-align: center;
-}
-
 main {
     position: relative;
     background-color: $secondary;
@@ -293,7 +280,7 @@ main {
 
         h5 {
             text-transform: uppercase;
-            color: #6f0015;
+            color: $tertiary;
             font-size: 12px;
             font-weight: 800;
             margin: 0;
@@ -395,10 +382,32 @@ main {
             }
         }
 
+        .salary-display {
+            font-size: 36px;
+            background-color: #fff;
+            height: 43px;
+            line-height: 43px;
+            font-weight: 800;
+            border-radius: 4px;
+            padding-left: 10px;
+            color: $tertiary;
+        }
+
         .manual-input {
             position: relative;
             border-radius: 4px;
             background-color: #fff;
+            padding-left: 26px;
+
+            &:before {
+                content: "£";
+                position: absolute;
+                left: 10px;
+                font-size: 36px;
+                font-weight: 800;
+                top: -3px;
+                color: $tertiary;
+            }
 
             @media (orientation: landscape) and (max-width: 800px) {
                 max-width: 53%;
@@ -410,7 +419,7 @@ main {
                 border: none;
                 font-size: 36px;
                 height: 41px;
-                color: #6f0015;
+                color: $tertiary;
                 font-weight: 800;
                 font-family: $primary-font;
                 width: 100%;
@@ -423,7 +432,7 @@ main {
                 position: absolute;
                 right: 15px;
                 top: 4px;
-                color: #6f0015;
+                color: $tertiary;
                 font-size: 36px;
                 cursor: pointer;
             }
@@ -455,7 +464,7 @@ main {
                 float: left;
                 width: 50%;
                 padding-right: 5px;
-                border-right: 1px solid #6f0015;
+                border-right: 1px solid $tertiary;
             }
 
             .right {
@@ -553,4 +562,10 @@ md-sidenav {
         background-repeat: no-repeat;
         background-position: top right;
     }
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
 }

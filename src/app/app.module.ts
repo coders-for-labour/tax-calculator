@@ -13,13 +13,15 @@ import { NationalInsuranceService } from "./national-insurance.service";
 import { WcipfService } from "./wcipf.service";
 import { WelcomeDialogComponent } from './welcome-dialog/welcome-dialog.component';
 import { CyclerComponent, CyclerItemComponent } from './cycler/cycler.component';
+import { AutofocusDirective } from './autofocus.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
     WelcomeDialogComponent,
     CyclerComponent,
-    CyclerItemComponent
+    CyclerItemComponent,
+    AutofocusDirective
   ],
   imports: [
     BrowserModule,

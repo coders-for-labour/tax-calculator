@@ -4,7 +4,7 @@
         <md-icon (click)="sidenav.toggle()">close</md-icon>
         Info
     </header>
-    <div class="sidenav-content">
+    <div class="sidenav-content" cdk-focus-start>
       <h3>Instructions</h3>
       <p>
         Use the slider on the left to adjust the annual salary, or tap on the salary at the top to enter your own.
@@ -53,9 +53,12 @@
     <div id="content" [ngClass]="{ 'slider': !manualEntry }">
       <div class="results" *ngIf="current && proposed">
         <h5>Salary <span *ngIf="!manualEntry">(Tap to edit)</span></h5>
-        <div class="manual-input">
-          <input inputmode="numeric" [(ngModel)]="salary" currencyMask [options]="{ prefix: '£', precision: '0', allowNegative: false }" maxlength="9" (click)="manualEntry = true" />
-          <md-icon (click)="manualEntry = false" *ngIf="manualEntry">close</md-icon>
+        <div class="salary-display" (click)="manualEntry = true" *ngIf="!manualEntry">
+          {{ salary | currency:'GBP':true:'1.0-0' }}
+        </div>
+        <div class="manual-input" *ngIf="manualEntry">
+          <input type="number" [(ngModel)]="salary" max="9" pattern="[0-9]" autofocus />
+          <md-icon (click)="manualEntry = false">close</md-icon>
         </div>
         <div class="comparison">
           <cycler>
@@ -69,7 +72,7 @@
               </div>
               <div class="right">
                   <h4>Labour</h4>
-                  <h5>Tax</h5>
+                  <h5>Tax</h5> 
                   <div class="amount">{{ proposed.tax | currency:'GBP':true:'1.2-2' }}<span>/yr</span></div>
                   <h5>Take Home</h5>
                   <div class="amount">{{ proposed.net - ni | currency:'GBP':true:'1.2-2' }}<span>/yr</span></div>
