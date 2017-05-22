@@ -10,7 +10,7 @@
         Use the slider on the left to adjust the annual salary, or tap on the salary at the top to enter your own.
       </p>
       <p>
-        Certain information will cycle between yearly, monthly and weekly calculations. You can click these areas to manually change them.
+        You can change the comparison values to annual, monthly or weekly by using the time menu on the top right or by clicking/tapping the area.
       </p>
       <h3>Please note:</h3>
       <ul>
@@ -27,9 +27,31 @@
   </md-sidenav>
   <main>
     <header>
-      <md-icon (click)="sidenav.toggle()" class="sidenav-toggle">info_outline</md-icon>
+      <button md-icon-button (click)="sidenav.toggle()" class="sidenav-toggle">
+        <md-icon>info_outline</md-icon>
+      </button>
       <h1>Tax Calculator</h1>
+      <button md-icon-button md-raised-button [mdMenuTriggerFor]="timeMenu" class="time-button">
+        <md-icon color="primary">schedule</md-icon>
+      </button>
     </header>
+    <md-menu #timeMenu="mdMenu">
+      <button md-menu-item (click)="setTimePeriod(0)">
+        <md-icon *ngIf="cyclerIndex == 0">check</md-icon>
+        <md-icon *ngIf="cyclerIndex != 0"></md-icon>
+        <span>Yearly</span>
+      </button>
+      <button md-menu-item (click)="setTimePeriod(1)">
+        <md-icon *ngIf="cyclerIndex == 1">check</md-icon>
+        <md-icon *ngIf="cyclerIndex != 1"></md-icon>
+        <span>Monthly</span>
+      </button>
+      <button md-menu-item (click)="setTimePeriod(2)">
+        <md-icon *ngIf="cyclerIndex == 2">check</md-icon>
+        <md-icon *ngIf="cyclerIndex != 2"></md-icon>
+        <span>Weekly</span>
+      </button>
+    </md-menu>
     <div id="slider" [ngClass]="{ 'open': !manualEntry }">
       <div class="markers">
         <div (click)="setSlider(47)" class="avg">
@@ -52,7 +74,7 @@
     </div>
     <div id="content" [ngClass]="{ 'slider': !manualEntry }">
       <div class="results" *ngIf="current && proposed">
-        <h5>Salary <span *ngIf="!manualEntry">(Tap to edit)</span></h5>
+        <h5 (click)="manualEntry = true">Annual Salary <span *ngIf="!manualEntry">(Tap to edit)</span></h5>
         <div class="salary-display" (click)="manualEntry = true" *ngIf="!manualEntry">
           {{ salary | currency:'GBP':true:'1.0-0' }}
         </div>
@@ -61,7 +83,7 @@
           <md-icon (click)="manualEntry = false">close</md-icon>
         </div>
         <div class="comparison">
-          <cycler>
+          <cycler [auto]="false" #comparisonCycler>
             <cycler-item>
               <div class="left">
                   <h4>Current</h4>

@@ -17,10 +17,17 @@ export class CyclerItemComponent {
 export class CyclerComponent implements OnInit, AfterContentInit, OnDestroy {
   private childrenSub: Subscription;
   private timer: any;
-  private index: number = -1;
-
+  private _index: number = -1;
+  
+  public get index(): number {
+    return this._index;
+  }
+  
   @Input()
   public interval: number = 5000;
+
+  @Input()
+  public auto: boolean = true;
 
   @ContentChildren(CyclerItemComponent)
   private children: QueryList<CyclerItemComponent>;
@@ -42,7 +49,7 @@ export class CyclerComponent implements OnInit, AfterContentInit, OnDestroy {
 
   private onItemsUpdate(): void {
     this.stopTimer();
-    this.index = -1;
+    this._index = -1;
 
     if (this.children.length == 0)
       return;
@@ -56,20 +63,30 @@ export class CyclerComponent implements OnInit, AfterContentInit, OnDestroy {
     this.next();
   }
 
+  public setIndex(index: number): void {
+    if (index >= this.children.length)
+      index = this.children.length - 1;
+
+      this.children.forEach((item, i, arr) => {
+        item.visible = i == index;
+      });
+
+      this._index = index;
+  }
+
   private next(): void {
-      let nextIndex = this.index + 1;
+      let nextIndex = this._index + 1;
 
       if (nextIndex >= this.children.length)
         nextIndex = 0;
       
-      this.children.forEach((item, index, arr) => {
-        item.visible = index == nextIndex;
-      });
-
-      this.index = nextIndex;
+      this.setIndex(nextIndex);
   }
 
   private startTimer(): void {
+    if (!this.auto)
+      return;
+
     this.stopTimer();
     this.timer = setInterval(() => this.next(), this.interval);
   }

@@ -5,6 +5,7 @@ import { NationalInsuranceService } from "./national-insurance.service";
 import { WcipfService, WcipfResultItem } from "./wcipf.service";
 import { CURRENT_TAX, PROPOSED_TAX, NATIONAL_INSURANCE } from "./configuration";
 import { WelcomeDialogComponent } from "./welcome-dialog/welcome-dialog.component";
+import { CyclerComponent } from "./cycler/cycler.component";
 
 @Component({
   selector: 'app-root',
@@ -46,6 +47,16 @@ export class AppComponent implements OnInit, AfterViewInit {
   @ViewChild("slider")
   public slider: MdSlider;
 
+  @ViewChild("comparisonCycler")
+  public comparisonCyclier: CyclerComponent;
+
+  public get cyclerIndex(): number {
+      if (!this.comparisonCyclier)
+        return 0;
+
+      return this.comparisonCyclier.index;
+  }
+
   constructor(
     private tax: TaxService,
     private nationalInsurance: NationalInsuranceService,
@@ -67,6 +78,10 @@ export class AppComponent implements OnInit, AfterViewInit {
   public setSlider(value: number): void {
     this.slider.value = value;
     this.sliderUpdate(value);
+  }
+
+  public setTimePeriod(index: number): void {
+    this.comparisonCyclier.setIndex(index);
   }
 
   private sliderUpdate(input: number): void {

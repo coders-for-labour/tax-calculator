@@ -35,9 +35,14 @@ main {
 
         .sidenav-toggle {
             position: absolute;
-            top: 22px;
+            top: 12px;
             left: 17px;
-            cursor: pointer;
+        }
+
+        .time-button {
+            position: absolute;
+            top: 12px;
+            right: 17px;
         }
 
         h1 {
@@ -287,7 +292,7 @@ main {
             position: relative;
 
             span {
-                font-size: 12px;
+                font-size: 9px;
             }
 
             .change-symbols {
@@ -391,6 +396,11 @@ main {
             border-radius: 4px;
             padding-left: 10px;
             color: $tertiary;
+            box-sizing: border-box;
+
+            @media (orientation: landscape) and (max-width: 800px) {
+                max-width: 53%;
+            }
         }
 
         .manual-input {
@@ -398,6 +408,7 @@ main {
             border-radius: 4px;
             background-color: #fff;
             padding-left: 26px;
+            box-sizing: border-box;
 
             &:before {
                 content: "£";
@@ -444,6 +455,7 @@ main {
             margin-right: -12px;
             overflow: hidden;
             margin-bottom: 8px;
+            cursor: pointer;
 
             .left,
             .right {
