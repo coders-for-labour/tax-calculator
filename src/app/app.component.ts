@@ -17,6 +17,8 @@ export class AppComponent implements OnInit, AfterViewInit {
   private _manualEntry: boolean = false;
   public ni: number = 0;
 
+  public advanced: boolean = false;
+
   public get manualEntry(): boolean {
     return this._manualEntry;
   }
