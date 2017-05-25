@@ -275,7 +275,8 @@ main {
         left: 110px;
 
         .benefit,
-        .pay-for {
+        .pay-for,
+        .breakdown {
             left: 10px;
         }
     }
@@ -501,7 +502,8 @@ main {
     }
 
     .benefit,
-    .pay-for {
+    .pay-for,
+    .breakdown {
         position: absolute;
         top: 310px;
         bottom: 0;
@@ -553,17 +555,22 @@ main {
         font-weight: 700;
         font-size: 13px;
 
-        ul {
-            padding-left: 20px;
-            font-size: 14px;
-        }
-
         @media (orientation: portrait) and (min-width: 321px) {
             font-size: 16px;
         }
 
         @media (min-width: 800px) {
             font-size: 18px;
+        }
+    }
+
+    .breakdown {
+        padding: 10px;
+        color: #fff;
+        font-size: 14px;
+
+        ul {
+            padding-left: 20px;
         }
     }
 }

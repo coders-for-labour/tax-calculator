@@ -173,9 +173,10 @@
           You won't be paying any more tax. Even so, you'll still get great stuff like, a fully funded NHS, no tuition fees.
         </div>
       </ng-template>
-      <div class="benefit" *ngIf="advanced">
+      <div class="breakdown" *ngIf="advanced">
         <h3>Current</h3>
-        Allowance: {{ current.allowance | currency:'GBP':true:'1.0-0' }}<br/>
+        Allowance: {{ current.allowance | currency:'GBP':true:'1.2-2' }}<br/>
+        Taxable: {{ current.taxable | currency:'GBP':true:'1.2-2' }}<br/>
         Breakdown:
         <ul>
           <li *ngFor="let band of current.bands | mapValues">
@@ -183,7 +184,8 @@
           </li>
         </ul>
         <h3>Labour</h3>
-        Allowance: {{ proposed.allowance | currency:'GBP':true:'1.0-0' }}<br/>
+        Allowance: {{ proposed.allowance | currency:'GBP':true:'1.2-2' }}<br/>
+        Taxable: {{ current.taxable | currency:'GBP':true:'1.2-2' }}<br/>
         Breakdown:
         <ul>
           <li *ngFor="let band of proposed.bands | mapValues">
