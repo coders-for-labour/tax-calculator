@@ -14,6 +14,7 @@ import { WcipfService } from "./wcipf.service";
 import { WelcomeDialogComponent } from './welcome-dialog/welcome-dialog.component';
 import { CyclerComponent, CyclerItemComponent } from './cycler/cycler.component';
 import { AutofocusDirective } from './autofocus.directive';
+import { MapValuesPipe } from './map-values.pipe';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { AutofocusDirective } from './autofocus.directive';
     WelcomeDialogComponent,
     CyclerComponent,
     CyclerItemComponent,
-    AutofocusDirective
+    AutofocusDirective,
+    MapValuesPipe
   ],
   imports: [
     BrowserModule,

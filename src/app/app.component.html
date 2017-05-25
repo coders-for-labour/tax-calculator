@@ -31,25 +31,31 @@
         <md-icon>info_outline</md-icon>
       </button>
       <h1>Tax Calculator</h1>
-      <button md-icon-button md-raised-button [mdMenuTriggerFor]="timeMenu" class="time-button">
-        <md-icon color="primary">schedule</md-icon>
+      <button md-icon-button [mdMenuTriggerFor]="timeMenu" class="time-button">
+        <md-icon>more_vert</md-icon>
       </button>
     </header>
     <md-menu #timeMenu="mdMenu">
       <button md-menu-item (click)="setTimePeriod(0)">
-        <md-icon *ngIf="cyclerIndex == 0">check</md-icon>
-        <md-icon *ngIf="cyclerIndex != 0"></md-icon>
+        <md-icon *ngIf="cyclerIndex == 0">radio_button_checked</md-icon>
+        <md-icon *ngIf="cyclerIndex != 0">radio_button_unchecked</md-icon>
         <span>Yearly</span>
       </button>
       <button md-menu-item (click)="setTimePeriod(1)">
-        <md-icon *ngIf="cyclerIndex == 1">check</md-icon>
-        <md-icon *ngIf="cyclerIndex != 1"></md-icon>
+        <md-icon *ngIf="cyclerIndex == 1">radio_button_checked</md-icon>
+        <md-icon *ngIf="cyclerIndex != 1">radio_button_unchecked</md-icon>
         <span>Monthly</span>
       </button>
       <button md-menu-item (click)="setTimePeriod(2)">
-        <md-icon *ngIf="cyclerIndex == 2">check</md-icon>
-        <md-icon *ngIf="cyclerIndex != 2"></md-icon>
+        <md-icon *ngIf="cyclerIndex == 2">radio_button_checked</md-icon>
+        <md-icon *ngIf="cyclerIndex != 2">radio_button_unchecked</md-icon>
         <span>Weekly</span>
+      </button>
+      <hr />
+      <button md-menu-item (click)="advanced = !advanced">
+        <md-icon *ngIf="advanced">check_box</md-icon>
+        <md-icon *ngIf="!advanced">check_box_outline_blank</md-icon>
+        <span>Advanced</span>
       </button>
     </md-menu>
     <div id="slider" [ngClass]="{ 'open': !manualEntry }">
@@ -159,7 +165,7 @@
           </li>
         </ul>
       </div>-->
-      <ng-template [ngIf]="current && proposed">
+      <ng-template [ngIf]="current && proposed && !advanced">
         <div class="benefit" *ngIf="proposed.tax - current.tax > 0">
           Looks like you'd be paying more tax under Labour. This might be a concern but it will be made up in other ways. Like having a fully funded NHS.
         </div>
@@ -167,6 +173,24 @@
           You won't be paying any more tax. Even so, you'll still get great stuff like, a fully funded NHS, no tuition fees.
         </div>
       </ng-template>
+      <div class="benefit" *ngIf="advanced">
+        <h3>Current</h3>
+        Allowance: {{ current.allowance | currency:'GBP':true:'1.0-0' }}<br/>
+        Breakdown:
+        <ul>
+          <li *ngFor="let band of current.bands | mapValues">
+            {{ band.key }} ({{band.value.rate}}%): {{ band.value.tax | currency:'GBP':true:'1.2-2' }}
+          </li>
+        </ul>
+        <h3>Labour</h3>
+        Allowance: {{ proposed.allowance | currency:'GBP':true:'1.0-0' }}<br/>
+        Breakdown:
+        <ul>
+          <li *ngFor="let band of proposed.bands | mapValues">
+            {{ band.key }} ({{band.value.rate}}%): {{ band.value.tax | currency:'GBP':true:'1.2-2' }}
+          </li>
+        </ul>
+      </div>
     </div>
   </main>
 </md-sidenav-container>
