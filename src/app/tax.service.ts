@@ -1,6 +1,5 @@
-import { Injectable } from "@angular/core";
 
-interface TaxBand {
+export interface TaxBand {
     start: number;
     end?: number;
     rate: number;
@@ -34,12 +33,13 @@ export interface CalculationResult {
     net?: number;
 }
 
-@Injectable()
-export class TaxService {
-    public calculate(income: number, config: TaxConfig): CalculationResult {
-        let allowance = this.getAllowance(income, config);
+export abstract class TaxService {
+    protected abstract get config(): TaxConfig;
+
+    public calculate(income: number): CalculationResult {
+        let allowance = this.getAllowance(income);
         let taxable = this.getTaxable(income, allowance);
-        let tax = this.calculateTax(taxable, config.bands);
+        let tax = this.calculateTax(income);
         let net = income - tax.total;
 
         return {
@@ -50,41 +50,16 @@ export class TaxService {
             net: net
         };
     }
- 
-    private getAllowance(income: number, config: TaxConfig): number {
-        var taperedAllowanceDeduction = Math.max((income - config.taperedAllowanceThreshold) / 2, 0);
-        return Math.max(config.allowance - taperedAllowanceDeduction, 0);
+
+    private getAllowance(income: number): number {
+        var taperedAllowanceDeduction = Math.max((income - this.config.taperedAllowanceThreshold) / 2, 0);
+        return Math.max(this.config.allowance - taperedAllowanceDeduction, 0);
     }
 
     private getTaxable(income: number, allowance: number): number {
          return Math.max(income - allowance, 0);
     }
 
-    private calculateTax(income: number, bands: TaxBands): { bands: TaxResult, total: number } {
-        let result: TaxResult = {};
-        let total = 0;
+    protected abstract calculateTax(income: number): { bands: TaxResult, total: number };
+}
 
-        for (let name in bands) {
-            let band = bands[name];
-
-            let taxable: number;
-
-            if (band.end)
-                taxable = Math.max(Math.min(income, band.end) - band.start, 0);
-            else
-                taxable = Math.max(income - band.start, 0);
- 
-            var per = band.rate / 100;
-            var tax = taxable * per;
-            total += tax;
-
-            result[name] = {
-                rate: band.rate,
-                taxable: taxable,
-                tax: tax
-            }
-        }
-
-        return { bands: result, total: total };
-    }
-} 

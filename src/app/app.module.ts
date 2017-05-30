@@ -8,7 +8,8 @@ import { CurrencyMaskModule } from "ng2-currency-mask";
 
 import { AppComponent } from './app.component';
 
-import { TaxService } from "./tax.service";
+import { CurrentTaxService } from "./current-tax.service";
+import { ProposedTaxService } from "./proposed-tax.service";
 import { NationalInsuranceService } from "./national-insurance.service";
 import { WcipfService } from "./wcipf.service";
 import { WelcomeDialogComponent } from './welcome-dialog/welcome-dialog.component';
@@ -36,7 +37,7 @@ import { MapValuesPipe } from './map-values.pipe';
   exports: [
     MaterialModule
   ],
-  providers: [TaxService, NationalInsuranceService, WcipfService],
+  providers: [CurrentTaxService, ProposedTaxService, NationalInsuranceService, WcipfService],
   bootstrap: [AppComponent],
   entryComponents: [WelcomeDialogComponent]
 })

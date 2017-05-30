@@ -15,23 +15,26 @@ export const NATIONAL_INSURANCE: NIBands = {
 }
 
 export const CURRENT_TAX: TaxConfig = { 
-    allowance: 11509,
+    allowance: 11500,
     taperedAllowanceThreshold: 100000,
     bands: {
-      basic: { start: 0, end: 33500, rate: 20 },
-      higher: { start: 33500, end: 150000, rate: 40 },
+      basic: { start: 11500, end: 45000, rate: 20 },
+      higher: { start: 45000, end: 100000, rate: 40 },
+      tapered: { start: 100000, end: 123000, rate: 40 },
+      zeroAllowance: { start: 123000, end: 150000, rate: 40 },
       additional: { start: 150000, rate: 45 }
     }
 }
 
 export const PROPOSED_TAX: TaxConfig = { 
-    allowance: 11509,
+    allowance: 11500,
     taperedAllowanceThreshold: 100000,
     bands: {
-      basic: { start: 0, end: 33500, rate: 20 },
-      higher: { start: 33500, end: 80000, rate: 40 },
-      additional: { start: 80000, end: 123000, rate: 45 },
-      extra: { start: 123000, rate: 50 }
+      basic: { start: 11500, end: 45000, rate: 20 },
+      higher: { start: 45000, end: 80000, rate: 40 },
+      additional: { start: 80000, end: 100000, rate: 45 },
+      tapered: { start: 100000, end: 123000, rate: 45 },
+      top: { start: 123000, rate: 50 }
     }
 }
 

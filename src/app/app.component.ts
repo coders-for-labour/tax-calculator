@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { MdSliderChange, MdSlider, MdDialog } from "@angular/material";
-import { TaxService, CalculationResult } from "./tax.service";
+import { CalculationResult } from "./tax.service";
+import { CurrentTaxService } from "./current-tax.service";
+import { ProposedTaxService } from "./proposed-tax.service";
 import { NationalInsuranceService } from "./national-insurance.service";
 import { WcipfService, WcipfResultItem } from "./wcipf.service";
 import { CURRENT_TAX, PROPOSED_TAX, NATIONAL_INSURANCE } from "./configuration";
@@ -60,7 +62,8 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   constructor(
-    private tax: TaxService,
+    private currentTax: CurrentTaxService,
+    private proposedTax: ProposedTaxService,
     private nationalInsurance: NationalInsuranceService,
     private wcipf: WcipfService,
     private dialog: MdDialog) {}
@@ -112,8 +115,8 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   private calculate(): void {
-    this.current = this.tax.calculate(this._salary, CURRENT_TAX);
-    this.proposed = this.tax.calculate(this._salary, PROPOSED_TAX);
+    this.current = this.currentTax.calculate(this._salary);
+    this.proposed = this.proposedTax.calculate(this._salary);
     this.ni = this.nationalInsurance.calculate(this._salary, NATIONAL_INSURANCE);
     this.wcipfResults = this.wcipf.get(this.proposed.tax - this.current.tax);
   }
