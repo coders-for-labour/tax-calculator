@@ -284,6 +284,7 @@ main {
 
     .results {
         padding: 15px 5px;
+        overflow: hidden;
 
         h5 {
             text-transform: uppercase;
@@ -328,6 +329,7 @@ main {
             font-size: 12px;
             line-height: 12px;
             margin-bottom: 5px;
+            white-space: nowrap;
 
             span {
                 font-size: 10px;
