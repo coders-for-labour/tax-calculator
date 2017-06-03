@@ -82,7 +82,7 @@ export class ProposedTaxService extends TaxService {
                 basic: basicResult,
                 higher: higherResult,
                 additional: additionalResult,
-                extra: topResult
+                top: topResult
             },
             total: total
         };
