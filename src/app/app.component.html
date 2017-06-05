@@ -144,11 +144,6 @@
         </div>
         <div class="change">
           <h5>
-            <!--<div class="change-symbols">
-              <i [ngClass]="{ active: proposed.tax - current.tax > 0 }">+</i>
-              /
-              <i [ngClass]="{ active: proposed.tax - current.tax < 0 }">-</i>
-            </div>-->
             Tax Change
           </h5>
           <div *ngIf="proposed.tax - current.tax != 0">
@@ -159,20 +154,12 @@
           <div class="amount xxl" *ngIf="proposed.tax - current.tax == 0">NONE</div>
         </div>
       </div>
-      <!--<div class="pay-for" *ngIf="wcipfResults && wcipfResults.length > 0">
-        <h3>Could pay for any of these</h3>
-        <ul>
-          <li *ngFor="let item of wcipfResults">
-            {{ item.total | number:'1.0-0' }} {{ item.total > 1 && item.plural ? item.plural : item.name }} / yr
-          </li>
-        </ul>
-      </div>-->
       <ng-template [ngIf]="current && proposed && !advanced">
         <div class="benefit" *ngIf="proposed.tax - current.tax > 0">
           Looks like you'd be paying more tax under Labour. This might be a concern but you would be contributing to a better society by having things like a fully funded NHS.
         </div>
         <div class="benefit" *ngIf="proposed.tax - current.tax == 0">
-          You won't be paying any more tax. Even so, you'll still get great stuff like a fully funded NHS and no tuition fees.
+          You won't be paying any more tax. Even so, you and your family still get access to great things like a fully funded NHS and no tuition fees.
         </div>
       </ng-template>
       <div class="breakdown" *ngIf="advanced">
