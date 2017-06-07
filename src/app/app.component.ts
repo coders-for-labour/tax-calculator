@@ -36,8 +36,8 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   public set salary(value: number) {
-    if (value > 999999999)
-      value = 999999999;
+    if (value > 99999999999)
+      value = 99999999999;
 
     this._salary = value;
     this.calculate();
