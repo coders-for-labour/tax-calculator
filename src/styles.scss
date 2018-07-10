@@ -1,609 +1,613 @@
 /* You can add global styles to this file, and also import other style files */
-@import "material";
-@import "config";
+@import 'material';
+@import 'config';
 
-html,body {
-    font-family: $primary-font;
-    margin: 0;
-    padding: 0;
-    background-color: $primary;
+html,
+body {
+  font-family: $primary-font;
+  margin: 0;
+  padding: 0;
+  background-color: $primary;
 }
 
-html, body, md-sidenav-container, main {
-    height: 100%;
-    width: 100%;
-    overflow: hidden;
+html,
+body,
+md-sidenav-container,
+main {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
 }
 
 main {
+  position: relative;
+  background-color: $secondary;
+
+  @media (min-width: 800px) {
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  > header {
+    color: #fff;
+    text-transform: uppercase;
+    text-align: center;
+    background-color: $primary;
+    padding: 18px;
     position: relative;
-    background-color: $secondary;
 
-    @media (min-width: 800px) {
-        max-width: 600px;
-        margin-left: auto;
-        margin-right: auto;
+    .sidenav-toggle {
+      position: absolute;
+      top: 12px;
+      left: 17px;
     }
 
-    > header {
-        color: #fff;
-        text-transform: uppercase;
-        text-align: center;
-        background-color: $primary;
-        padding: 18px;
-        position: relative;
-
-        .sidenav-toggle {
-            position: absolute;
-            top: 12px;
-            left: 17px;
-        }
-
-        .time-button {
-            position: absolute;
-            top: 12px;
-            right: 17px;
-        }
-
-        h1 {
-            margin: 0;
-            font-size: 22px;
-        }
+    .time-button {
+      position: absolute;
+      top: 12px;
+      right: 17px;
     }
+
+    h1 {
+      margin: 0;
+      font-size: 22px;
+    }
+  }
 }
 
 .sidenav-header {
-    padding: 14px;
-    color: #fff;
-    font-weight: 700;
-    background-color: $primary;
-    text-transform: uppercase;
+  padding: 14px;
+  color: #fff;
+  font-weight: 700;
+  background-color: $primary;
+  text-transform: uppercase;
 
-    md-icon {
-        position: absolute;
-        top: 13px;
-        right: 13px;
-        cursor: pointer;
-    }
+  md-icon {
+    position: absolute;
+    top: 13px;
+    right: 13px;
+    cursor: pointer;
+  }
 }
 
 .sidenav-content {
-    position: absolute;
-    top: 50px;
-    bottom: 50px;
-    overflow: auto;
-    padding: 15px;
-    font-size: 14px;
+  position: absolute;
+  top: 50px;
+  bottom: 50px;
+  overflow: auto;
+  padding: 15px;
+  font-size: 14px;
 
-    h3 {
-        margin-top: 0;
-    }
+  h3 {
+    margin-top: 0;
+  }
 }
 
 .sidenav-footer {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    padding: 14px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 14px;
+  color: #fff;
+  font-weight: 700;
+  background-color: $primary;
+
+  a {
     color: #fff;
-    font-weight: 700;
-    background-color: $primary;
+    text-decoration: none;
+    display: block;
+  }
 
-    a {
-        color: #fff;
-        text-decoration: none;
-        display: block;
-    }
-
-    .c4l {
-        position: absolute;
-        top: 5px;
-        right: 8px;
-        background-image: url(http://www.codersforlabour.com/assets/logo-white.png);
-        width: 35px;
-        height: 40px;
-        background-size: cover;
-    }
+  .c4l {
+    position: absolute;
+    top: 5px;
+    right: 8px;
+    background-image: url(http://www.codersforlabour.com/assets/logo-white.png);
+    width: 35px;
+    height: 40px;
+    background-size: cover;
+  }
 }
 
 #slider {
-    position: absolute;
-    top: 86px;
-    bottom: 20px;
-    width: 110px;
-    left: -110px;
-    background-color: #fff;
-    border-radius: 0 6px 6px 0;
-    padding: 20px 0;
-    transition: left 0.5s ease-in-out;
-    
-    &.open {
-        left: 0;
+  position: absolute;
+  top: 86px;
+  bottom: 20px;
+  width: 110px;
+  left: -110px;
+  background-color: #fff;
+  border-radius: 0 6px 6px 0;
+  padding: 20px 0;
+  transition: left 0.5s ease-in-out;
 
-        .markers {
-            display: block;
-        }
-    }
+  &.open {
+    left: 0;
 
     .markers {
+      display: block;
+    }
+  }
+
+  .markers {
+    position: absolute;
+    left: 0;
+    top: 20px;
+    bottom: 20px;
+    display: none;
+
+    > div {
+      top: 8px;
+      bottom: 8px;
+      position: absolute;
+
+      label {
         position: absolute;
-        left: 0;
-        top: 20px;
-        bottom: 20px;
-        display: none;
+        bottom: -14px;
+        left: 70px;
+        background-color: #000;
+        color: #fff;
+        padding: 6px 0;
+        text-align: center;
+        font-size: 12px;
+        font-weight: 800;
+        width: 48px;
 
-        > div {
-            top: 8px;
-            bottom: 8px;
+        &:before {
+          content: '';
+          position: absolute;
+          left: -8px;
+          width: 0;
+          height: 0;
+          border-style: solid;
+          border-width: 8px 8px 8px 0;
+          border-color: transparent #000000 transparent transparent;
+        }
+      }
+
+      &.top5,
+      &.avg {
+        label {
+          left: auto;
+          bottom: -22px;
+          right: -36px;
+          width: 36px;
+          background-color: $secondary;
+
+          &:before {
+            left: auto;
+            right: -8px;
+            top: 50%;
+            margin-top: -8px;
+            border-style: solid;
+            border-width: 8px 0 8px 8px;
+            border-color: transparent transparent transparent $secondary;
+          }
+        }
+      }
+
+      &.avg {
+        transform: translateY(-30.8725%);
+      }
+
+      &.k27-5 {
+        transform: translateY(-30.8725%);
+      }
+
+      &.k80 {
+        transform: translateY(-64.4295%);
+      }
+
+      &.k150 {
+        transform: translateY(-83.8926%);
+      }
+
+      &.top5 {
+        transform: translateY(-64.4295%);
+      }
+    }
+  }
+
+  md-slider {
+    margin-left: 34px;
+
+    &.mat-slider-vertical {
+      height: 100%;
+      width: 38px;
+
+      .mat-slider-wrapper,
+      .mat-slider-track-wrapper,
+      .mat-slider-track-background,
+      .mat-slider-track-fill {
+        width: 16px;
+      }
+
+      .mat-slider-wrapper {
+        left: 11px;
+      }
+
+      .mat-slider-track-fill {
+        background-color: $secondary;
+      }
+
+      .mat-slider-thumb-container {
+        .mat-slider-thumb {
+          width: 40px;
+          height: 40px;
+          bottom: -20px;
+          right: -20px;
+          background-color: $primary;
+          border: none;
+
+          &:before,
+          &:after {
             position: absolute;
+            left: 0;
+            right: 0;
+            font-family: 'Material Icons';
+            text-align: center;
+            color: #fff;
+            font-size: 30px;
+          }
 
-            label {
-                position: absolute;
-                bottom: -14px;
-                left: 70px;
-                background-color: #000;
-                color: #fff;
-                padding: 6px 0;
-                text-align: center;
-                font-size: 12px;
-                font-weight: 800;
-                width: 48px;
+          &:before {
+            top: -3px;
+            content: '\E5CE';
+          }
 
-                &:before {
-                    content: "";
-                    position: absolute;
-                    left: -8px;
-                    width: 0;
-                    height: 0;
-                    border-style: solid;
-                    border-width: 8px 8px 8px 0;
-                    border-color: transparent #000000 transparent transparent;
-                }
-            }
-
-            &.top5,
-            &.avg {
-                label {
-                    left: auto;
-                    bottom: -22px;
-                    right: -36px;
-                    width: 36px;
-                    background-color: $secondary;
-
-                    &:before {
-                        left: auto;
-                        right: -8px;
-                        top: 50%;
-                        margin-top: -8px;
-                        border-style: solid;
-                        border-width: 8px 0 8px 8px;
-                        border-color: transparent transparent transparent $secondary;
-                    }
-                }
-            }
-
-            &.avg {
-                transform: translateY(-30.8725%);
-            }
-
-            &.k27-5 {
-                transform: translateY(-30.8725%);
-            }
-
-            &.k80 {
-                transform: translateY(-64.4295%);
-            }
-
-            &.k150 {
-                transform: translateY(-83.8926%);
-            }
-
-            &.top5 {
-                transform: translateY(-64.4295%);
-            }
+          &:after {
+            bottom: -3px;
+            content: '\E5CF';
+          }
         }
+      }
     }
-
-    md-slider {
-        margin-left: 34px;
-
-        &.mat-slider-vertical {
-            height: 100%;
-            width: 38px;
-            
-            .mat-slider-wrapper,
-            .mat-slider-track-wrapper,
-            .mat-slider-track-background,
-            .mat-slider-track-fill {
-                width: 16px;
-            }
-
-            .mat-slider-wrapper {
-                left: 11px;
-            }
-
-            .mat-slider-track-fill {
-                background-color: $secondary;
-            }
-
-            .mat-slider-thumb-container {
-                .mat-slider-thumb {
-                    width: 40px;
-                    height: 40px;
-                    bottom: -20px;
-                    right: -20px;
-                    background-color: $primary;
-                    border: none;
-                    
-                    &:before,
-                    &:after {
-                        position: absolute;
-                        left: 0;
-                        right: 0;
-                        font-family: "Material Icons";
-                        text-align: center;
-                        color: #fff;
-                        font-size: 30px;
-                    }
-
-                    &:before {
-                        top: -3px;
-                        content: "\E5CE";
-                    }
-
-                    &:after {
-                        bottom: -3px;
-                        content: "\E5CF";
-                    }
-                }
-            }
-        }
-    }
+  }
 }
 
 #content {
-    overflow: hidden;
-    position: absolute;
-    transition: left 0.5s ease-in-out;
-    top: 66px;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    padding: 0 10px;
+  overflow: hidden;
+  position: absolute;
+  transition: left 0.5s ease-in-out;
+  top: 66px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 0 10px;
 
-    &.slider {
-        left: 110px;
-
-        .benefit,
-        .pay-for,
-        .breakdown {
-            left: 10px;
-        }
-    }
-
-    .results {
-        padding: 15px 5px;
-        overflow: hidden;
-
-        h5 {
-            text-transform: uppercase;
-            color: $tertiary;
-            font-size: 12px;
-            font-weight: 800;
-            margin: 0;
-            position: relative;
-
-            span {
-                font-size: 9px;
-            }
-
-            .change-symbols {
-                position: absolute;
-                font-size: 20px;
-                right: 5px;
-                top: -2px;
-                color: #910029;
-
-                i {
-                    font-style: normal;
-
-                    &.active {
-                        color: #fff;
-                    }
-                }
-            }
-
-            @media (orientation: portrait) and (min-width: 321px) {
-                font-size: 16px;
-            }
-
-            @media (min-width: 800px) {
-                font-size: 20px;
-            }
-        }
-
-        .amount {
-            color: #fff;
-            font-weight: 800;
-            font-size: 12px;
-            line-height: 12px;
-            margin-bottom: 5px;
-            white-space: nowrap;
-
-            span {
-                font-size: 10px;
-            }
-
-            &.l {
-                font-size: 28px;
-                line-height: 28px;
-
-                span {
-                    font-size: 20px;
-                }
-            }
-
-            &.xl {
-                font-size: 36px;
-                line-height: 36px;
-
-                span {
-                    font-size: 24px;
-                }
-            }
-
-            &.xxl {
-                font-size: 50px;
-                line-height: 50px;
-            }
-
-            @media (orientation: portrait) and (min-width: 321px) {
-                font-size: 16px;
-                line-height: 16px;
-
-                &.l {
-                    font-size: 34px;
-                    line-height: 34px;
-                    
-                    span {
-                        font-size: 24px;
-                    }
-                }
-            }
-
-            @media (min-width: 800px) {
-                font-size: 24px;
-                line-height: 24px;
-
-                span {
-                    font-size: 14px;
-                }
-
-                &.l {
-                    font-size: 42px;
-                    line-height: 42px;
-                    
-                    span {
-                        font-size: 32px;
-                    }
-                }
-            }
-        }
-
-        .salary-display {
-            font-size: 36px;
-            background-color: #fff;
-            height: 43px;
-            line-height: 43px;
-            font-weight: 800;
-            border-radius: 4px;
-            padding-left: 10px;
-            color: $tertiary;
-            box-sizing: border-box;
-
-            @media (orientation: landscape) and (max-width: 800px) {
-                max-width: 53%;
-            }
-        }
-
-        .manual-input {
-            position: relative;
-            border-radius: 4px;
-            background-color: #fff;
-            padding-left: 26px;
-            box-sizing: border-box;
-
-            &:before {
-                content: "£";
-                position: absolute;
-                left: 10px;
-                font-size: 36px;
-                font-weight: 800;
-                top: -3px;
-                color: $tertiary;
-            }
-
-            @media (orientation: landscape) and (max-width: 800px) {
-                max-width: 53%;
-            }
-
-            input {
-                position:relative;
-                background: none;
-                border: none;
-                font-size: 36px;
-                height: 41px;
-                color: $tertiary;
-                font-weight: 800;
-                font-family: $primary-font;
-                width: 100%;
-                text-align: left !important;
-                outline: none;
-                padding-left: 5px;
-            }
-
-            md-icon {
-                position: absolute;
-                right: 15px;
-                top: 4px;
-                color: $tertiary;
-                font-size: 36px;
-                cursor: pointer;
-            }
-        }
-
-        .comparison {
-            padding-top: 8px;
-            margin-left: -12px;
-            margin-right: -12px;
-            overflow: hidden;
-            margin-bottom: 8px;
-            cursor: pointer;
-
-            .left,
-            .right {
-                padding-left: 12px;
-                padding-right: 12px;
-                box-sizing: border-box;
-
-                h4 {
-                    color: #fff;
-                    font-weight: 800;
-                    text-transform: uppercase;
-                    margin: 0;
-                    font-size: 16px;
-                }
-            }
-
-            .left {
-                float: left;
-                width: 50%;
-                padding-right: 5px;
-                border-right: 1px solid $tertiary;
-            }
-
-            .right {
-                float: right;
-                width: 50%;
-                padding-left: 6px;
-            }
-        }
-
-        @media all and (orientation: landscape) and (max-width: 800px) { 
-            .comparison {
-                width: 60%;
-            }
-
-            .change {
-                position: absolute;
-                top: 15px;
-                right: 15px;
-                width: 40%;
-            }
-        }
-    }
+  &.slider {
+    left: 110px;
 
     .benefit,
     .pay-for,
     .breakdown {
+      left: 10px;
+    }
+  }
+
+  .results {
+    padding: 15px 5px;
+    overflow: hidden;
+
+    h5 {
+      text-transform: uppercase;
+      color: $tertiary;
+      font-size: 12px;
+      font-weight: 800;
+      margin: 0;
+      position: relative;
+
+      span {
+        font-size: 9px;
+      }
+
+      .change-symbols {
         position: absolute;
-        top: 310px;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        background-color: $primary;
-        overflow: auto;
-        transition: left 0.5s ease-in-out;
+        font-size: 20px;
+        right: 5px;
+        top: -2px;
+        color: #910029;
 
-        h3 {
+        i {
+          font-style: normal;
+
+          &.active {
             color: #fff;
-            text-align: center;
-            text-transform: uppercase;
-            font-size: 16px;
-            margin: 10px 0;
+          }
         }
+      }
 
-        @media all and (orientation: landscape) and (max-width: 800px) { 
-            top: 192px;
-        }
+      @media (orientation: portrait) and (min-width: 321px) {
+        font-size: 16px;
+      }
 
-        @media (orientation: portrait) and (min-width: 321px) {
-            top: 360px;
-        }
-
-        @media (min-width: 800px) {
-            top: 425px;
-        }
+      @media (min-width: 800px) {
+        font-size: 20px;
+      }
     }
 
-    .pay-for {
-        ul {
-            list-style: none;
-            margin: 0;
-            padding: 0;
+    .amount {
+      color: #fff;
+      font-weight: 800;
+      font-size: 12px;
+      line-height: 12px;
+      margin-bottom: 5px;
+      white-space: nowrap;
 
-            li {
-                color: #fff;
-                font-weight: 500;
-                padding: 5px 10px;
-                border-top: 1px solid $secondary;
-            }
+      span {
+        font-size: 10px;
+      }
+
+      &.l {
+        font-size: 28px;
+        line-height: 28px;
+
+        span {
+          font-size: 20px;
         }
+      }
+
+      &.xl {
+        font-size: 36px;
+        line-height: 36px;
+
+        span {
+          font-size: 24px;
+        }
+      }
+
+      &.xxl {
+        font-size: 50px;
+        line-height: 50px;
+      }
+
+      @media (orientation: portrait) and (min-width: 321px) {
+        font-size: 16px;
+        line-height: 16px;
+
+        &.l {
+          font-size: 34px;
+          line-height: 34px;
+
+          span {
+            font-size: 24px;
+          }
+        }
+      }
+
+      @media (min-width: 800px) {
+        font-size: 24px;
+        line-height: 24px;
+
+        span {
+          font-size: 14px;
+        }
+
+        &.l {
+          font-size: 42px;
+          line-height: 42px;
+
+          span {
+            font-size: 32px;
+          }
+        }
+      }
     }
 
-    .benefit {
-        padding: 10px;
+    .salary-display {
+      font-size: 36px;
+      background-color: #fff;
+      height: 43px;
+      line-height: 43px;
+      font-weight: 800;
+      border-radius: 4px;
+      padding-left: 10px;
+      color: $tertiary;
+      box-sizing: border-box;
+
+      @media (orientation: landscape) and (max-width: 800px) {
+        max-width: 53%;
+      }
+    }
+
+    .manual-input {
+      position: relative;
+      border-radius: 4px;
+      background-color: #fff;
+      padding-left: 26px;
+      box-sizing: border-box;
+
+      &:before {
+        content: '£';
+        position: absolute;
+        left: 10px;
+        font-size: 36px;
+        font-weight: 800;
+        top: -3px;
+        color: $tertiary;
+      }
+
+      @media (orientation: landscape) and (max-width: 800px) {
+        max-width: 53%;
+      }
+
+      input {
+        position: relative;
+        background: none;
+        border: none;
+        font-size: 36px;
+        height: 41px;
+        color: $tertiary;
+        font-weight: 800;
+        font-family: $primary-font;
+        width: 100%;
+        text-align: left !important;
+        outline: none;
+        padding-left: 5px;
+      }
+
+      md-icon {
+        position: absolute;
+        right: 15px;
+        top: 4px;
+        color: $tertiary;
+        font-size: 36px;
+        cursor: pointer;
+      }
+    }
+
+    .comparison {
+      padding-top: 8px;
+      margin-left: -12px;
+      margin-right: -12px;
+      overflow: hidden;
+      margin-bottom: 8px;
+      cursor: pointer;
+
+      .left,
+      .right {
+        padding-left: 12px;
+        padding-right: 12px;
+        box-sizing: border-box;
+
+        h4 {
+          color: #fff;
+          font-weight: 800;
+          text-transform: uppercase;
+          margin: 0;
+          font-size: 16px;
+        }
+      }
+
+      .left {
+        float: left;
+        width: 50%;
+        padding-right: 5px;
+        border-right: 1px solid $tertiary;
+      }
+
+      .right {
+        float: right;
+        width: 50%;
+        padding-left: 6px;
+      }
+    }
+
+    @media all and (orientation: landscape) and (max-width: 800px) {
+      .comparison {
+        width: 60%;
+      }
+
+      .change {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        width: 40%;
+      }
+    }
+  }
+
+  .benefit,
+  .pay-for,
+  .breakdown {
+    position: absolute;
+    top: 310px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: $primary;
+    overflow: auto;
+    transition: left 0.5s ease-in-out;
+
+    h3 {
+      color: #fff;
+      text-align: center;
+      text-transform: uppercase;
+      font-size: 16px;
+      margin: 10px 0;
+    }
+
+    @media all and (orientation: landscape) and (max-width: 800px) {
+      top: 192px;
+    }
+
+    @media (orientation: portrait) and (min-width: 321px) {
+      top: 360px;
+    }
+
+    @media (min-width: 800px) {
+      top: 425px;
+    }
+  }
+
+  .pay-for {
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+
+      li {
         color: #fff;
-        font-weight: 700;
-        font-size: 13px;
+        font-weight: 500;
+        padding: 5px 10px;
+        border-top: 1px solid $secondary;
+      }
+    }
+  }
 
-        @media (orientation: portrait) and (min-width: 321px) {
-            font-size: 16px;
-        }
+  .benefit {
+    padding: 10px;
+    color: #fff;
+    font-weight: 700;
+    font-size: 13px;
 
-        @media (min-width: 800px) {
-            font-size: 18px;
-        }
+    @media (orientation: portrait) and (min-width: 321px) {
+      font-size: 16px;
     }
 
-    .breakdown {
-        padding: 10px;
-        color: #fff;
-        font-size: 14px;
-
-        ul {
-            padding-left: 20px;
-        }
+    @media (min-width: 800px) {
+      font-size: 18px;
     }
+  }
+
+  .breakdown {
+    padding: 10px;
+    color: #fff;
+    font-size: 14px;
+
+    ul {
+      padding-left: 20px;
+    }
+  }
 }
 
 md-sidenav {
-    width: 300px;
+  width: 300px;
 }
 
 .mat-sidenav-container {
-    background-color: $secondary;
+  background-color: $secondary;
 
-    @media (min-width: 800px) {
-        background-image: url(http://www.labour.org.uk/page/-/Images/vote-labour-bg-min.jpg);
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-position: top right;
-    }
+  @media (min-width: 800px) {
+    background-image: url(https://labour.org.uk/wp-content/uploads/2017/10/Crowd_Launch-2017_sm.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top right;
+  }
 }
 
-input[type=number]::-webkit-inner-spin-button, 
-input[type=number]::-webkit-outer-spin-button { 
-  -webkit-appearance: none; 
-  margin: 0; 
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 .mat-menu-panel {
-    hr {
-        height: 0;
-        border: none;
-        border-bottom: 1px solid #ccc;
-        margin: 0;
-    }
+  hr {
+    height: 0;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    margin: 0;
+  }
 }

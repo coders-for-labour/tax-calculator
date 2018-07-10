@@ -1,8 +1,8 @@
 <md-sidenav-container>
   <md-sidenav #sidenav mode="push" opened="false">
     <header class="sidenav-header">
-        <md-icon (click)="sidenav.toggle()">close</md-icon>
-        Info
+      <md-icon (click)="sidenav.toggle()">close</md-icon>
+      Info
     </header>
     <div class="sidenav-content" cdk-focus-start>
       <h3>Instructions</h3>
@@ -10,17 +10,20 @@
         Use the slider on the left to adjust the annual salary, or tap on the salary at the top to enter your own.
       </p>
       <p>
-        You can change the comparison values to annual, monthly or weekly by using the time menu on the top right or by clicking/tapping the area.
+        You can change the comparison values to annual, monthly or weekly by using the time menu on the top right or by clicking/tapping
+        the area.
       </p>
       <h3>Notes about this tool:</h3>
       <ul>
         <li>It is for illustration purposes only.</li>
         <li>Calculations are estimates.</li>
         <li>It does not take into account additional deductions e.g. childcare vouchers, pensions, etc.</li>
-        <li>The "take home"" amount includes National Insurance deductions which may be calculated slightly differently than HMRC would.</li>
+        <li>The "take home"" amount includes National Insurance deductions which may be calculated slightly differently than
+          HMRC would.</li>
         <li>It uses the England, Wales and Northern Ireland tax bands. Scotland's are devolved so difficult to compare.</li>
       </ul>
-      Source code available on <a href="https://github.com/coders-for-labour/tax-calculator">GitHub</a>
+      Source code available on
+      <a href="https://github.com/coders-for-labour/tax-calculator">GitHub</a>
     </div>
     <footer class="sidenav-footer">
       <a href="http://www.codersforlabour.com" target="_blank">Made by Volunteers</a>
@@ -78,11 +81,14 @@
           <label>Top 5%</label>
         </div>
       </div>
-      <md-slider step="1" min="1" max="150" vertical (input)="onInputChange($event)" (change)="onInputChange($event)" value="47" #slider></md-slider>
+      <md-slider step="1" min="1" max="150" vertical (input)="onInputChange($event)" (change)="onInputChange($event)" value="47"
+        #slider></md-slider>
     </div>
     <div id="content" [ngClass]="{ 'slider': !manualEntry }">
       <div class="results" *ngIf="current && proposed">
-        <h5 (click)="manualEntry = true">Annual Salary <span *ngIf="!manualEntry">(Tap to edit)</span></h5>
+        <h5 (click)="manualEntry = true">Annual Salary
+          <span *ngIf="!manualEntry">(Tap to edit)</span>
+        </h5>
         <div class="salary-display" (click)="manualEntry = true" *ngIf="!manualEntry">
           {{ salary | currency:'GBP':true:'1.0-0' }}
         </div>
@@ -94,50 +100,74 @@
           <cycler [auto]="false" #comparisonCycler>
             <cycler-item>
               <div class="left">
-                  <h4>Current</h4>
-                  <h5>Tax</h5>
-                  <div class="amount">{{ current.tax | currency:'GBP':true:'1.2-2' }}<span>/yr</span></div>
-                  <h5>Take Home</h5> 
-                  <div class="amount">{{ current.net - ni | currency:'GBP':true:'1.2-2' }}<span>/yr</span></div>
+                <h4>Current</h4>
+                <h5>Tax</h5>
+                <div class="amount">{{ current.tax | currency:'GBP':true:'1.2-2' }}
+                  <span>/yr</span>
+                </div>
+                <h5>Take Home</h5>
+                <div class="amount">{{ current.net - ni | currency:'GBP':true:'1.2-2' }}
+                  <span>/yr</span>
+                </div>
               </div>
               <div class="right">
-                  <h4>Labour</h4>
-                  <h5>Tax</h5> 
-                  <div class="amount">{{ proposed.tax | currency:'GBP':true:'1.2-2' }}<span>/yr</span></div>
-                  <h5>Take Home</h5>
-                  <div class="amount">{{ proposed.net - ni | currency:'GBP':true:'1.2-2' }}<span>/yr</span></div>
+                <h4>Labour</h4>
+                <h5>Tax</h5>
+                <div class="amount">{{ proposed.tax | currency:'GBP':true:'1.2-2' }}
+                  <span>/yr</span>
+                </div>
+                <h5>Take Home</h5>
+                <div class="amount">{{ proposed.net - ni | currency:'GBP':true:'1.2-2' }}
+                  <span>/yr</span>
+                </div>
               </div>
             </cycler-item>
             <cycler-item>
               <div class="left">
-                  <h4>Current</h4>
-                  <h5>Tax</h5>
-                  <div class="amount">{{ current.tax / 12 | currency:'GBP':true:'1.2-2' }}<span>/mth</span></div>
-                  <h5>Take Home</h5> 
-                  <div class="amount">{{ (current.net - ni) / 12 | currency:'GBP':true:'1.2-2' }}<span>/mth</span></div>
+                <h4>Current</h4>
+                <h5>Tax</h5>
+                <div class="amount">{{ current.tax / 12 | currency:'GBP':true:'1.2-2' }}
+                  <span>/mth</span>
+                </div>
+                <h5>Take Home</h5>
+                <div class="amount">{{ (current.net - ni) / 12 | currency:'GBP':true:'1.2-2' }}
+                  <span>/mth</span>
+                </div>
               </div>
               <div class="right">
-                  <h4>Labour</h4>
-                  <h5>Tax</h5>
-                  <div class="amount">{{ proposed.tax / 12 | currency:'GBP':true:'1.2-2' }}<span>/mth</span></div>
-                  <h5>Take Home</h5>
-                  <div class="amount">{{ (proposed.net - ni) / 12 | currency:'GBP':true:'1.2-2' }}<span>/mth</span></div>
+                <h4>Labour</h4>
+                <h5>Tax</h5>
+                <div class="amount">{{ proposed.tax / 12 | currency:'GBP':true:'1.2-2' }}
+                  <span>/mth</span>
+                </div>
+                <h5>Take Home</h5>
+                <div class="amount">{{ (proposed.net - ni) / 12 | currency:'GBP':true:'1.2-2' }}
+                  <span>/mth</span>
+                </div>
               </div>
             </cycler-item>
             <cycler-item>
               <div class="left">
-                  <h4>Current</h4>
-                  <h5>Tax</h5>
-                  <div class="amount">{{ current.tax / 52 | currency:'GBP':true:'1.2-2' }}<span>/wk</span></div>
-                  <h5>Take Home</h5> 
-                  <div class="amount">{{ (current.net - ni) / 52 | currency:'GBP':true:'1.2-2' }}<span>/wk</span></div>
+                <h4>Current</h4>
+                <h5>Tax</h5>
+                <div class="amount">{{ current.tax / 52 | currency:'GBP':true:'1.2-2' }}
+                  <span>/wk</span>
+                </div>
+                <h5>Take Home</h5>
+                <div class="amount">{{ (current.net - ni) / 52 | currency:'GBP':true:'1.2-2' }}
+                  <span>/wk</span>
+                </div>
               </div>
               <div class="right">
-                  <h4>Labour</h4>
-                  <h5>Tax</h5>
-                  <div class="amount">{{ proposed.tax / 52 | currency:'GBP':true:'1.2-2' }}<span>/wk</span></div>
-                  <h5>Take Home</h5>
-                  <div class="amount">{{ (proposed.net - ni) / 52 | currency:'GBP':true:'1.2-2' }}<span>/wk</span></div>
+                <h4>Labour</h4>
+                <h5>Tax</h5>
+                <div class="amount">{{ proposed.tax / 52 | currency:'GBP':true:'1.2-2' }}
+                  <span>/wk</span>
+                </div>
+                <h5>Take Home</h5>
+                <div class="amount">{{ (proposed.net - ni) / 52 | currency:'GBP':true:'1.2-2' }}
+                  <span>/wk</span>
+                </div>
               </div>
             </cycler-item>
           </cycler>
@@ -147,40 +177,51 @@
             Tax Change
           </h5>
           <div *ngIf="proposed.tax - current.tax != 0">
-            <div class="amount l">{{ proposed.tax - current.tax > 0 ? '+' : '' }}{{ proposed.tax - current.tax | currency:'GBP':true:'1.2-2' }}<span>/yr</span></div>
-            <div class="amount l">{{ proposed.tax - current.tax > 0 ? '+' : '' }}{{ (proposed.tax - current.tax) / 12 | currency:'GBP':true:'1.2-2' }}<span>/mth</span></div>
-            <div class="amount l">{{ proposed.tax - current.tax > 0 ? '+' : '' }}{{ (proposed.tax - current.tax) / 52 | currency:'GBP':true:'1.2-2' }}<span>/wk</span></div>
+            <div class="amount l">{{ proposed.tax - current.tax > 0 ? '+' : '' }}{{ proposed.tax - current.tax | currency:'GBP':true:'1.2-2' }}
+              <span>/yr</span>
+            </div>
+            <div class="amount l">{{ proposed.tax - current.tax > 0 ? '+' : '' }}{{ (proposed.tax - current.tax) / 12 | currency:'GBP':true:'1.2-2'
+              }}
+              <span>/mth</span>
+            </div>
+            <div class="amount l">{{ proposed.tax - current.tax > 0 ? '+' : '' }}{{ (proposed.tax - current.tax) / 52 | currency:'GBP':true:'1.2-2'
+              }}
+              <span>/wk</span>
+            </div>
           </div>
           <div class="amount xxl" *ngIf="proposed.tax - current.tax == 0">NONE</div>
         </div>
       </div>
       <ng-template [ngIf]="current && proposed && !advanced">
         <div class="benefit" *ngIf="proposed.tax - current.tax > 0">
-          It looks like you'd be paying more tax under Labour. This means that you would be investing in a better society for you and your family with a fully-funded NHS, better education and improved security. 
+          It looks like you'd be paying more tax under Labour. This means that you would be investing in a better society for you and
+          your family with a fully-funded NHS, better education and improved security.
         </div>
         <div class="benefit" *ngIf="proposed.tax - current.tax == 0">
-          You won't be paying any more tax. Even so, you and your family still get access to great things like a fully funded NHS and no tuition fees.
+          You won't be paying any more tax. Even so, you and your family still get access to great things like a fully funded NHS and
+          no tuition fees.
         </div>
       </ng-template>
       <div class="breakdown" *ngIf="advanced">
         <h3>Current</h3>
-        Allowance: {{ current.allowance | currency:'GBP':true:'1.2-2' }}<br/>
-        Taxable: {{ current.taxable | currency:'GBP':true:'1.2-2' }}<br/>
-        Breakdown:
+        Allowance: {{ current.allowance | currency:'GBP':true:'1.2-2' }}
+        <br/> Taxable: {{ current.taxable | currency:'GBP':true:'1.2-2' }}
+        <br/> Breakdown:
         <ul>
           <li *ngFor="let band of current.bands | mapValues">
             {{ band.key }} ({{band.value.rate}}%): {{ band.value.tax | currency:'GBP':true:'1.2-2' }}
           </li>
         </ul>
         <h3>Labour</h3>
-        Allowance: {{ proposed.allowance | currency:'GBP':true:'1.2-2' }}<br/>
-        Taxable: {{ current.taxable | currency:'GBP':true:'1.2-2' }}<br/>
-        Breakdown:
+        Allowance: {{ proposed.allowance | currency:'GBP':true:'1.2-2' }}
+        <br/> Taxable: {{ current.taxable | currency:'GBP':true:'1.2-2' }}
+        <br/> Breakdown:
         <ul>
           <li *ngFor="let band of proposed.bands | mapValues">
             {{ band.key }} ({{band.value.rate}}%): {{ band.value.tax | currency:'GBP':true:'1.2-2' }}
           </li>
         </ul>
+        National Insurance: {{ ni | currency:'GBP':true:'1.2-2' }}
       </div>
     </div>
   </main>
