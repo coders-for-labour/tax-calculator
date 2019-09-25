@@ -6,7 +6,7 @@
 // Be sure that you only ever include this mixin once!
 @include mat-core();
 
-$md-lab-red: (
+$mat-lab-red: (
     50 : #fce0e7,
     100 : #f7b3c4,
     200 : #f2809d,
@@ -42,8 +42,8 @@ $md-lab-red: (
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue.
-$lab-app-primary: mat-palette($md-lab-red);
-$lab-app-accent:  mat-palette($md-lab-red, 900, 500, A400);
+$lab-app-primary: mat-palette($mat-lab-red);
+$lab-app-accent:  mat-palette($mat-lab-red, 900, 500, A400);
 
 // The warn palette is optional (defaults to red).
 $lab-app-warn:    mat-palette($mat-pink);

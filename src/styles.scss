@@ -12,7 +12,7 @@ body {
 
 html,
 body,
-md-sidenav-container,
+mat-sidenav-container,
 main {
   height: 100%;
   width: 100%;
@@ -63,7 +63,7 @@ main {
   background-color: $primary;
   text-transform: uppercase;
 
-  md-icon {
+  mat-icon {
     position: absolute;
     top: 13px;
     right: 13px;
@@ -209,7 +209,7 @@ main {
     }
   }
 
-  md-slider {
+  mat-slider {
     margin-left: 34px;
 
     &.mat-slider-vertical {
@@ -447,7 +447,7 @@ main {
         padding-left: 5px;
       }
 
-      md-icon {
+      mat-icon {
         position: absolute;
         right: 15px;
         top: 4px;
@@ -582,7 +582,7 @@ main {
   }
 }
 
-md-sidenav {
+mat-sidenav {
   width: 300px;
 }
 

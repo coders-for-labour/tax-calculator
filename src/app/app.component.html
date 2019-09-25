@@ -1,7 +1,7 @@
-<md-sidenav-container>
-  <md-sidenav #sidenav mode="push" opened="false">
+<mat-sidenav-container>
+  <mat-sidenav #sidenav mode="push" opened="false">
     <header class="sidenav-header">
-      <md-icon (click)="sidenav.toggle()">close</md-icon>
+      <mat-icon (click)="sidenav.toggle()">close</mat-icon>
       Info
     </header>
     <div class="sidenav-content" cdk-focus-start>
@@ -29,40 +29,40 @@
       <a href="http://www.codersforlabour.com" target="_blank">Made by Volunteers</a>
       <a href="http://www.codersforlabour.com" target="_blank" class="c4l"></a>
     </footer>
-  </md-sidenav>
+  </mat-sidenav>
   <main>
     <header>
-      <button md-icon-button (click)="sidenav.toggle()" class="sidenav-toggle">
-        <md-icon>info_outline</md-icon>
+      <button mat-icon-button (click)="sidenav.toggle()" class="sidenav-toggle">
+        <mat-icon>info_outline</mat-icon>
       </button>
       <h1>Tax Calculator</h1>
-      <button md-icon-button [mdMenuTriggerFor]="timeMenu" class="time-button">
-        <md-icon>more_vert</md-icon>
+      <button mat-icon-button [matMenuTriggerFor]="timeMenu" class="time-button">
+        <mat-icon>more_vert</mat-icon>
       </button>
     </header>
-    <md-menu #timeMenu="mdMenu">
-      <button md-menu-item (click)="setTimePeriod(0)">
-        <md-icon *ngIf="cyclerIndex == 0">radio_button_checked</md-icon>
-        <md-icon *ngIf="cyclerIndex != 0">radio_button_unchecked</md-icon>
+    <mat-menu #timeMenu="matMenu">
+      <button mat-menu-item (click)="setTimePeriod(0)">
+        <mat-icon *ngIf="cyclerIndex == 0">radio_button_checked</mat-icon>
+        <mat-icon *ngIf="cyclerIndex != 0">radio_button_unchecked</mat-icon>
         <span>Yearly</span>
       </button>
-      <button md-menu-item (click)="setTimePeriod(1)">
-        <md-icon *ngIf="cyclerIndex == 1">radio_button_checked</md-icon>
-        <md-icon *ngIf="cyclerIndex != 1">radio_button_unchecked</md-icon>
+      <button mat-menu-item (click)="setTimePeriod(1)">
+        <mat-icon *ngIf="cyclerIndex == 1">radio_button_checked</mat-icon>
+        <mat-icon *ngIf="cyclerIndex != 1">radio_button_unchecked</mat-icon>
         <span>Monthly</span>
       </button>
-      <button md-menu-item (click)="setTimePeriod(2)">
-        <md-icon *ngIf="cyclerIndex == 2">radio_button_checked</md-icon>
-        <md-icon *ngIf="cyclerIndex != 2">radio_button_unchecked</md-icon>
+      <button mat-menu-item (click)="setTimePeriod(2)">
+        <mat-icon *ngIf="cyclerIndex == 2">radio_button_checked</mat-icon>
+        <mat-icon *ngIf="cyclerIndex != 2">radio_button_unchecked</mat-icon>
         <span>Weekly</span>
       </button>
       <hr />
-      <button md-menu-item (click)="advanced = !advanced">
-        <md-icon *ngIf="advanced">check_box</md-icon>
-        <md-icon *ngIf="!advanced">check_box_outline_blank</md-icon>
+      <button mat-menu-item (click)="advanced = !advanced">
+        <mat-icon *ngIf="advanced">check_box</mat-icon>
+        <mat-icon *ngIf="!advanced">check_box_outline_blank</mat-icon>
         <span>Advanced</span>
       </button>
-    </md-menu>
+    </mat-menu>
     <div id="slider" [ngClass]="{ 'open': !manualEntry }">
       <div class="markers">
         <div (click)="setSlider(47)" class="avg">
@@ -81,8 +81,8 @@
           <label>Top 5%</label>
         </div>
       </div>
-      <md-slider step="1" min="1" max="150" vertical (input)="onInputChange($event)" (change)="onInputChange($event)" value="47"
-        #slider></md-slider>
+      <mat-slider step="1" min="1" max="150" vertical (input)="onInputChange($event)" (change)="onInputChange($event)" value="47"
+        #slider></mat-slider>
     </div>
     <div id="content" [ngClass]="{ 'slider': !manualEntry }">
       <div class="results" *ngIf="current && proposed">
@@ -90,11 +90,11 @@
           <span *ngIf="!manualEntry">(Tap to edit)</span>
         </h5>
         <div class="salary-display" (click)="manualEntry = true" *ngIf="!manualEntry">
-          {{ salary | currency:'GBP':true:'1.0-0' }}
+          {{ salary | currency:'GBP':'symbol':'1.0-0' }}
         </div>
         <div class="manual-input" *ngIf="manualEntry">
           <input type="number" [(ngModel)]="salary" max="9" pattern="[0-9]" autofocus />
-          <md-icon (click)="manualEntry = false">close</md-icon>
+          <mat-icon (click)="manualEntry = false">close</mat-icon>
         </div>
         <div class="comparison">
           <cycler [auto]="false" #comparisonCycler>
@@ -102,22 +102,22 @@
               <div class="left">
                 <h4>Current</h4>
                 <h5>Tax</h5>
-                <div class="amount">{{ current.tax | currency:'GBP':true:'1.2-2' }}
+                <div class="amount">{{ current.tax | currency:'GBP':'symbol':'1.2-2' }}
                   <span>/yr</span>
                 </div>
                 <h5>Take Home</h5>
-                <div class="amount">{{ current.net - ni | currency:'GBP':true:'1.2-2' }}
+                <div class="amount">{{ current.net - ni | currency:'GBP':'symbol':'1.2-2' }}
                   <span>/yr</span>
                 </div>
               </div>
               <div class="right">
                 <h4>Labour</h4>
                 <h5>Tax</h5>
-                <div class="amount">{{ proposed.tax | currency:'GBP':true:'1.2-2' }}
+                <div class="amount">{{ proposed.tax | currency:'GBP':'symbol':'1.2-2' }}
                   <span>/yr</span>
                 </div>
                 <h5>Take Home</h5>
-                <div class="amount">{{ proposed.net - ni | currency:'GBP':true:'1.2-2' }}
+                <div class="amount">{{ proposed.net - ni | currency:'GBP':'symbol':'1.2-2' }}
                   <span>/yr</span>
                 </div>
               </div>
@@ -126,22 +126,22 @@
               <div class="left">
                 <h4>Current</h4>
                 <h5>Tax</h5>
-                <div class="amount">{{ current.tax / 12 | currency:'GBP':true:'1.2-2' }}
+                <div class="amount">{{ current.tax / 12 | currency:'GBP':'symbol':'1.2-2' }}
                   <span>/mth</span>
                 </div>
                 <h5>Take Home</h5>
-                <div class="amount">{{ (current.net - ni) / 12 | currency:'GBP':true:'1.2-2' }}
+                <div class="amount">{{ (current.net - ni) / 12 | currency:'GBP':'symbol':'1.2-2' }}
                   <span>/mth</span>
                 </div>
               </div>
               <div class="right">
                 <h4>Labour</h4>
                 <h5>Tax</h5>
-                <div class="amount">{{ proposed.tax / 12 | currency:'GBP':true:'1.2-2' }}
+                <div class="amount">{{ proposed.tax / 12 | currency:'GBP':'symbol':'1.2-2' }}
                   <span>/mth</span>
                 </div>
                 <h5>Take Home</h5>
-                <div class="amount">{{ (proposed.net - ni) / 12 | currency:'GBP':true:'1.2-2' }}
+                <div class="amount">{{ (proposed.net - ni) / 12 | currency:'GBP':'symbol':'1.2-2' }}
                   <span>/mth</span>
                 </div>
               </div>
@@ -150,22 +150,22 @@
               <div class="left">
                 <h4>Current</h4>
                 <h5>Tax</h5>
-                <div class="amount">{{ current.tax / 52 | currency:'GBP':true:'1.2-2' }}
+                <div class="amount">{{ current.tax / 52 | currency:'GBP':'symbol':'1.2-2' }}
                   <span>/wk</span>
                 </div>
                 <h5>Take Home</h5>
-                <div class="amount">{{ (current.net - ni) / 52 | currency:'GBP':true:'1.2-2' }}
+                <div class="amount">{{ (current.net - ni) / 52 | currency:'GBP':'symbol':'1.2-2' }}
                   <span>/wk</span>
                 </div>
               </div>
               <div class="right">
                 <h4>Labour</h4>
                 <h5>Tax</h5>
-                <div class="amount">{{ proposed.tax / 52 | currency:'GBP':true:'1.2-2' }}
+                <div class="amount">{{ proposed.tax / 52 | currency:'GBP':'symbol':'1.2-2' }}
                   <span>/wk</span>
                 </div>
                 <h5>Take Home</h5>
-                <div class="amount">{{ (proposed.net - ni) / 52 | currency:'GBP':true:'1.2-2' }}
+                <div class="amount">{{ (proposed.net - ni) / 52 | currency:'GBP':'symbol':'1.2-2' }}
                   <span>/wk</span>
                 </div>
               </div>
@@ -177,14 +177,14 @@
             Tax Change
           </h5>
           <div *ngIf="proposed.tax - current.tax != 0">
-            <div class="amount l">{{ proposed.tax - current.tax > 0 ? '+' : '' }}{{ proposed.tax - current.tax | currency:'GBP':true:'1.2-2' }}
+            <div class="amount l">{{ proposed.tax - current.tax > 0 ? '+' : '' }}{{ proposed.tax - current.tax | currency:'GBP':'symbol':'1.2-2' }}
               <span>/yr</span>
             </div>
-            <div class="amount l">{{ proposed.tax - current.tax > 0 ? '+' : '' }}{{ (proposed.tax - current.tax) / 12 | currency:'GBP':true:'1.2-2'
+            <div class="amount l">{{ proposed.tax - current.tax > 0 ? '+' : '' }}{{ (proposed.tax - current.tax) / 12 | currency:'GBP':'symbol':'1.2-2'
               }}
               <span>/mth</span>
             </div>
-            <div class="amount l">{{ proposed.tax - current.tax > 0 ? '+' : '' }}{{ (proposed.tax - current.tax) / 52 | currency:'GBP':true:'1.2-2'
+            <div class="amount l">{{ proposed.tax - current.tax > 0 ? '+' : '' }}{{ (proposed.tax - current.tax) / 52 | currency:'GBP':'symbol':'1.2-2'
               }}
               <span>/wk</span>
             </div>
@@ -204,25 +204,25 @@
       </ng-template>
       <div class="breakdown" *ngIf="advanced">
         <h3>Current</h3>
-        Allowance: {{ current.allowance | currency:'GBP':true:'1.2-2' }}
-        <br/> Taxable: {{ current.taxable | currency:'GBP':true:'1.2-2' }}
+        Allowance: {{ current.allowance | currency:'GBP':'symbol':'1.2-2' }}
+        <br/> Taxable: {{ current.taxable | currency:'GBP':'symbol':'1.2-2' }}
         <br/> Breakdown:
         <ul>
           <li *ngFor="let band of current.bands | mapValues">
-            {{ band.key }} ({{band.value.rate}}%): {{ band.value.tax | currency:'GBP':true:'1.2-2' }}
+            {{ band.key }} ({{band.value.rate}}%): {{ band.value.tax | currency:'GBP':'symbol':'1.2-2' }}
           </li>
         </ul>
         <h3>Labour</h3>
-        Allowance: {{ proposed.allowance | currency:'GBP':true:'1.2-2' }}
-        <br/> Taxable: {{ current.taxable | currency:'GBP':true:'1.2-2' }}
+        Allowance: {{ proposed.allowance | currency:'GBP':'symbol':'1.2-2' }}
+        <br/> Taxable: {{ current.taxable | currency:'GBP':'symbol':'1.2-2' }}
         <br/> Breakdown:
         <ul>
           <li *ngFor="let band of proposed.bands | mapValues">
-            {{ band.key }} ({{band.value.rate}}%): {{ band.value.tax | currency:'GBP':true:'1.2-2' }}
+            {{ band.key }} ({{band.value.rate}}%): {{ band.value.tax | currency:'GBP':'symbol':'1.2-2' }}
           </li>
         </ul>
-        National Insurance: {{ ni | currency:'GBP':true:'1.2-2' }}
+        National Insurance: {{ ni | currency:'GBP':'symbol':'1.2-2' }}
       </div>
     </div>
   </main>
-</md-sidenav-container>
+</mat-sidenav-container>
