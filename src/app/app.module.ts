@@ -3,8 +3,15 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MaterialModule } from "@angular/material";
+import { MatIconModule } from "@angular/material/icon";
+import { MatSidenavModule } from "@angular/material/sidenav";
+import { MatSliderModule } from "@angular/material/slider";
+import { MatDialogModule } from "@angular/material/dialog";
+import { MatRippleModule } from "@angular/material/core";
+import { MatButtonModule } from '@angular/material/button';
 import { CurrencyMaskModule } from "ng2-currency-mask";
+import { MatMenuModule } from "@angular/material/menu";
+
 
 import { AppComponent } from './app.component';
 
@@ -31,11 +38,23 @@ import { MapValuesPipe } from './map-values.pipe';
     FormsModule,
     HttpModule,
     BrowserAnimationsModule,
-    MaterialModule,
+    MatIconModule,
+    MatSidenavModule,
+    MatSliderModule,
+    MatMenuModule,
+    MatDialogModule,
+    MatRippleModule,
+    MatButtonModule,
     CurrencyMaskModule
   ],
   exports: [
-    MaterialModule
+    MatIconModule,
+    MatSidenavModule,
+    MatSliderModule,
+    MatMenuModule,
+    MatDialogModule,
+    MatRippleModule,
+    MatButtonModule
   ],
   providers: [CurrentTaxService, ProposedTaxService, NationalInsuranceService, WcipfService],
   bootstrap: [AppComponent],

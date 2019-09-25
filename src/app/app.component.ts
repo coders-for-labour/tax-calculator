@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
-import { MdSliderChange, MdSlider, MdDialog } from "@angular/material";
+import { MatSliderChange } from "@angular/material/slider";
+import { MatDialog } from "@angular/material/dialog";
 import { CalculationResult } from "./tax.service";
 import { CurrentTaxService } from "./current-tax.service";
 import { ProposedTaxService } from "./proposed-tax.service";
@@ -48,10 +49,10 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   public wcipfResults: WcipfResultItem[];
 
-  @ViewChild("slider")
-  public slider: MdSlider;
+  @ViewChild("slider", { static: false })
+  public slider: MatSliderChange;
 
-  @ViewChild("comparisonCycler")
+  @ViewChild("comparisonCycler", { static: false })
   public comparisonCyclier: CyclerComponent;
 
   public get cyclerIndex(): number {
@@ -66,17 +67,17 @@ export class AppComponent implements OnInit, AfterViewInit {
     private proposedTax: ProposedTaxService,
     private nationalInsurance: NationalInsuranceService,
     private wcipf: WcipfService,
-    private dialog: MdDialog) {}
+    private dialog: MatDialog) {}
 
   public ngOnInit(): void {
     setTimeout(() => this.sliderUpdate(this.slider.value), 10);
   }
 
   public ngAfterViewInit(): void {
-    setTimeout(() => this.dialog.open(WelcomeDialogComponent), 10);
+    setTimeout(() => this.dialog.open(WelcomeDialogComponent, {}), 10);
   }
 
-  public onInputChange(event: MdSliderChange): void {
+  public onInputChange(event: MatSliderChange): void {
       this.sliderUpdate(event.value);
   }
 
