@@ -1,5 +1,5 @@
 import { Component, OnInit, AfterContentInit, QueryList, Input, ContentChildren, ElementRef, OnDestroy, HostListener } from '@angular/core';
-import { Subscription } from "rxjs/Rx";
+import { Subscription } from "rxjs";
 
 @Component({
   selector: "cycler-item",
