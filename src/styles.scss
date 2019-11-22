@@ -530,7 +530,7 @@ main {
   .pay-for,
   .breakdown {
     position: absolute;
-    top: 310px;
+    top: 330px;
     bottom: 0;
     left: 0;
     right: 0;
@@ -551,7 +551,7 @@ main {
     }
 
     @media (orientation: portrait) and (min-width: 321px) {
-      top: 360px;
+      top: 380px;
     }
 
     @media (min-width: 800px) {

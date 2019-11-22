@@ -18,9 +18,12 @@
         <li>It is for illustration purposes only.</li>
         <li>Calculations are estimates.</li>
         <li>It does not take into account additional deductions e.g. childcare vouchers, pensions, etc.</li>
-        <li>The "take home"" amount includes National Insurance deductions which may be calculated slightly differently than
-          HMRC would.</li>
+        <li>The "take home" amount includes National Insurance deductions which may be calculated slightly differently than HMRC would.</li>
         <li>It uses the England, Wales and Northern Ireland tax bands. Scotland's are devolved so difficult to compare.</li>
+        <li>
+          Income percentile information is from the most recent government statistics
+          <a href="https://www.gov.uk/government/statistics/percentile-points-from-1-to-99-for-total-income-before-and-after-tax" target="_blank">here</a>.
+        </li>
       </ul>
       Source code available on
       <a href="https://github.com/coders-for-labour/tax-calculator">GitHub</a>
@@ -102,6 +105,7 @@
           <input type="number" [(ngModel)]="salary" max="9" pattern="[0-9]" autofocus />
           <mat-icon (click)="manualEntry = false">close</mat-icon>
         </div>
+        <h5 style="font-size: 12px;color:#fff">{{ percentage < 50 ? 'Top' : 'Bottom' }} {{ percentage }}% of earners</h5>
         <div class="comparison">
           <cycler [auto]="false" #comparisonCycler>
             <cycler-item>

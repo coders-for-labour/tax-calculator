@@ -9,6 +9,7 @@ import { WcipfService, WcipfResultItem } from "./wcipf.service";
 import { CURRENT_TAX, PROPOSED_TAX, NATIONAL_INSURANCE } from "./configuration";
 import { WelcomeDialogComponent } from "./welcome-dialog/welcome-dialog.component";
 import { CyclerComponent } from "./cycler/cycler.component";
+import { IncomePercentileService } from './income-percentile.service';
 
 @Component({
   selector: 'app-root',
@@ -46,6 +47,7 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   public current: CalculationResult;
   public proposed: CalculationResult;
+  public percentage: number = 99;
 
   public wcipfResults: WcipfResultItem[];
 
@@ -66,6 +68,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     private currentTax: CurrentTaxService,
     private proposedTax: ProposedTaxService,
     private nationalInsurance: NationalInsuranceService,
+    private incomePercentile: IncomePercentileService,
     private wcipf: WcipfService,
     private dialog: MatDialog) {}
 
@@ -119,6 +122,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     this.current = this.currentTax.calculate(this._salary);
     this.proposed = this.proposedTax.calculate(this._salary);
     this.ni = this.nationalInsurance.calculate(this._salary, NATIONAL_INSURANCE);
+    this.percentage = this.incomePercentile.calculate(this._salary);
     this.wcipfResults = this.wcipf.get(this.proposed.tax - this.current.tax);
   }
 }

@@ -23,6 +23,7 @@ import { WelcomeDialogComponent } from './welcome-dialog/welcome-dialog.componen
 import { CyclerComponent, CyclerItemComponent } from './cycler/cycler.component';
 import { AutofocusDirective } from './autofocus.directive';
 import { MapValuesPipe } from './map-values.pipe';
+import { IncomePercentileService } from './income-percentile.service';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,7 @@ import { MapValuesPipe } from './map-values.pipe';
     MatRippleModule,
     MatButtonModule
   ],
-  providers: [CurrentTaxService, ProposedTaxService, NationalInsuranceService, WcipfService],
+  providers: [CurrentTaxService, ProposedTaxService, NationalInsuranceService, IncomePercentileService, WcipfService],
   bootstrap: [AppComponent],
   entryComponents: [WelcomeDialogComponent]
 })
