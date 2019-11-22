@@ -34,7 +34,7 @@ main {
     text-transform: uppercase;
     text-align: center;
     background-color: $primary;
-    padding: 18px;
+    padding: 10px;
     position: relative;
 
     .sidenav-toggle {
@@ -52,6 +52,24 @@ main {
     h1 {
       margin: 0;
       font-size: 22px;
+
+      a {
+        color: #fff;
+        text-decoration: none;
+
+        .c4l {
+          display: inline-block;
+          margin-right: 5px;
+          background-image: url(https://www.codersforlabour.com/assets/logo-white.png);
+          width: 18px;
+          height: 21px;
+          background-size: 100% auto;
+          vertical-align: middle;
+        }
+
+        display: block;
+        font-size: 12px;
+      }
     }
   }
 }
