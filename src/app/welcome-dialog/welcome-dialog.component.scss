@@ -15,3 +15,23 @@ h2 {
     color: #fff;
     text-transform: uppercase;
 }
+
+.footer {
+    text-align: center;
+    line-height: 40px;
+    font-weight: bold;
+    font-size: 12px;
+    margin-top: 10px;
+    padding-top: 5px;
+    border-top: 1px solid #ccc;
+
+    .c4l {
+        display: inline-block;
+        vertical-align: middle;
+        margin-right: 5px;
+        background-image: url(https://www.codersforlabour.com/assets/logo-full2.png);
+        width: 25px;
+        height: 30px;
+        background-size: cover;
+    }
+}
