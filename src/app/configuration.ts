@@ -32,9 +32,9 @@ export const PROPOSED_TAX: TaxConfig = {
   bands: {
     basic: { start: 12500, end: 50000, rate: 20 },
     higher: { start: 50000, end: 80000, rate: 40 },
-    additional: { start: 80000, end: 123000, rate: 45 },
-    tapered: { start: 123000, end: 123000, rate: 45 },
-    top: { start: 123000, rate: 50 }
+    additional: { start: 80000, end: 125000, rate: 45 },
+    tapered: { start: 125000, end: 125000, rate: 45 },
+    top: { start: 125000, rate: 50 }
   }
 };
 
