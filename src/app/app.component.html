@@ -68,8 +68,8 @@
         <div (click)="setSlider(47)" class="avg">
           <label>UK Avg</label>
         </div>
-        <div (click)="setSlider(47)" class="k27-5">
-          <label>£27.5k</label>
+        <div (click)="setSlider(47)" class="k29">
+          <label>£29k</label>
         </div>
         <div (click)="setSlider(97)" class="k80">
           <label>£80k</label>
@@ -81,7 +81,7 @@
           <label>Top 5%</label>
         </div>
       </div>
-      <mat-slider step="1" min="1" max="150" vertical (input)="onInputChange($event)" (change)="onInputChange($event)" value="47"
+      <mat-slider step="1" min="1" max="150" vertical (input)="onInputChange($event)" (change)="onInputChange($event)" value="50"
         #slider></mat-slider>
     </div>
     <div id="content" [ngClass]="{ 'slider': !manualEntry }">

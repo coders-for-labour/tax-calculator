@@ -5,36 +5,36 @@ import { WcipfItem } from './wcipf.service';
 export const NATIONAL_INSURANCE: NIBands = {
   primary: {
     rate: 12,
-    start: 162,
-    end: 892
+    start: 166,
+    end: 962
   },
   upper: {
     rate: 2,
-    start: 892
+    start: 962
   }
 };
 
 export const CURRENT_TAX: TaxConfig = {
-  allowance: 11850,
+  allowance: 12500,
   taperedAllowanceThreshold: 100000,
   bands: {
-    basic: { start: 11850, end: 46350, rate: 20 },
-    higher: { start: 46350, end: 100000, rate: 40 },
-    tapered: { start: 100000, end: 123700, rate: 40 },
-    zeroAllowance: { start: 123700, end: 150000, rate: 40 },
+    basic: { start: 12500, end: 50000, rate: 20 },
+    higher: { start: 50000, end: 100000, rate: 40 },
+    tapered: { start: 100000, end: 125000, rate: 40 },
+    zeroAllowance: { start: 125000, end: 150000, rate: 40 },
     additional: { start: 150000, rate: 45 }
   }
 };
 
 export const PROPOSED_TAX: TaxConfig = {
-  allowance: 11850,
+  allowance: 12500,
   taperedAllowanceThreshold: 100000,
   bands: {
-    basic: { start: 11850, end: 46350, rate: 20 },
-    higher: { start: 46350, end: 80000, rate: 40 },
-    additional: { start: 80000, end: 100000, rate: 45 },
-    tapered: { start: 100000, end: 123700, rate: 45 },
-    top: { start: 123700, rate: 50 }
+    basic: { start: 12500, end: 50000, rate: 20 },
+    higher: { start: 50000, end: 80000, rate: 40 },
+    additional: { start: 80000, end: 125000, rate: 45 },
+    tapered: { start: 125000, end: 150000, rate: 45 },
+    top: { start: 150000, rate: 50 }
   }
 };
 
