@@ -35,7 +35,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"content\">\n  <h2>Welcome!</h2>\n  <p>\n    This is a simple income tax calculator to estimate the difference in tax would be under a Labour government.\n  </p>\n  <p>\n    Use the slider on the left to adjust the annual salary, or tap on the salary at the top to enter your own.\n  </p>\n  <div class=\"buttons\">\n    <button mat-mini-fab (click)=\"close()\"><mat-icon>check</mat-icon></button>\n  </div>\n  <div class=\"footer\">\n    <a href=\"https://www.codersforlabour.com\" target=\"_blank\" class=\"c4l\"></a>\n    <a href=\"https://www.codersforlabour.com\" target=\"_blank\">Made by Volunteers</a>\n  </div>\n</div>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"content\">\n  <h2>Welcome!</h2>\n  <p>\n    <b>Now updated for the 2019 General Election!</b>\n  </p>\n  <p>\n    This is a simple income tax calculator to estimate the difference in tax would be under a Labour government.\n  </p>\n  <p>\n    Use the slider on the left to adjust the annual salary, or tap on the salary at the top to enter your own.\n  </p>\n  <div class=\"buttons\">\n    <button mat-mini-fab (click)=\"close()\"><mat-icon>check</mat-icon></button>\n  </div>\n  <div class=\"footer\">\n    <a href=\"https://www.codersforlabour.com\" target=\"_blank\" class=\"c4l\"></a>\n    <a href=\"https://www.codersforlabour.com\" target=\"_blank\">Made by Volunteers</a>\n  </div>\n</div>\n");
 
 /***/ }),
 
